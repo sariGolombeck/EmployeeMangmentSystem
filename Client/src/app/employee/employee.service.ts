@@ -21,9 +21,7 @@ export class EmployeeService {
 
   public basicUrl = 'https://localhost:7195/api/Employee';
   constructor(private http: HttpClient) { }
-  private headers = new HttpHeaders({
-    'Authorization': `Bearer ${sessionStorage.getItem('token')}`
-  });
+
   getEmployeeById(id: number): Observable<Employee> {
     return this.http.get<Employee>(`${this.basicUrl}/${id}`);
   }
@@ -31,30 +29,40 @@ export class EmployeeService {
     return this.http.get<Employee[]>(this.basicUrl);
   }
   addEmployee(employee: Employee): Observable<Employee> {
-    return this.http.post<Employee>(this.basicUrl, employee);
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${sessionStorage.getItem('token')}`
+    });
+    return this.http.post<Employee>(this.basicUrl, employee,{headers: headers});
   }
   addPositionToEmployee(id: number, position: any): Observable<any> {
-    // var x:any={
-    //   positionId:position.positionId,
-    //   entryDateIntoOffice:position.entryDateIntoOffice,
-    //   ismanagerial:position.ismanagerial
-    // }
+   const headers = new HttpHeaders({
+      'Authorization': `Bearer ${sessionStorage.getItem('token')}`
+    });
     console.log("id of service", id, "position", position)
-    return this.http.post<any>(`${this.basicUrl}/${id}/positions`, position);
+    return this.http.post<any>(`${this.basicUrl}/${id}/positions`, position,{headers: headers});
   }
   getEmployeePositions(id: number): Observable<any[]> {
     return this.http.get<any[]>(`${this.basicUrl}/${id}/positions`)
   }
   updatePositionEmployee(employeeId: number, positionId: number, position: PositionEmployeeDto): Observable<any> {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${sessionStorage.getItem('token')}`
+    });
     return this.http.put(`${this.basicUrl}/${employeeId}/positions/${positionId}`, position, {
-      headers: this.headers
+      headers: headers
     })
   }
   deletePositionEmployee(employeeId: number, positionId: number): Observable<any> {
-    return this.http.delete(`${this.basicUrl}/${employeeId}/positions/${positionId}`)
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${sessionStorage.getItem('token')}`
+    });
+    return this.http.delete(`${this.basicUrl}/${employeeId}/positions/${positionId}`,{headers: headers})
   }
   deleteEmployee(id: number): Observable<any> {
-    return this.http.delete(`${this.basicUrl}/${id}`)
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${sessionStorage.getItem('token')}`
+    });
+    return this.http.delete(`${this.basicUrl}/${id}`, {headers: headers})
   }
   updateEmployee(id: number, employee: any): Observable<any> {
     console.log("id of service", id)

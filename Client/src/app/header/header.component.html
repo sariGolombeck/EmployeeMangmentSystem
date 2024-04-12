@@ -1,10 +1,10 @@
 <mat-toolbar color="primary">
-  <span>My Project</span>
+  <span>Employees Management System</span>
   <span class="fill-remaining-space"></span>
   <button mat-icon-button aria-label="Home" routerLink="/home" (click)="onHomeClick()" matTooltip="Home">
     <mat-icon>home</mat-icon>
   </button>
-  <button mat-icon-button aria-label="Employees List" matTooltip="Employees List">
+  <button mat-icon-button aria-label="Employees List" (click)="onAllEmployees()"matTooltip="Employees List">
     <mat-icon>group</mat-icon>
   </button>
   <button mat-icon-button aria-label="More Info" matTooltip="More Info">
@@ -19,7 +19,7 @@
   <button mat-icon-button aria-label="Download" (click)="onDownloadClick()" matTooltip="Download">
     <mat-icon>download</mat-icon>
   </button>
-  <!-- <button mat-icon-button aria-label="Add Position" (click)="addPosition()" matTooltip="Add Position">
+  <button mat-icon-button aria-label="Add Position" (click)="addPosition()" matTooltip="Add Position">
     <mat-icon>work</mat-icon>
-  </button> -->
+  </button>
 </mat-toolbar>

@@ -30,7 +30,6 @@
 
 // }
 import { AbstractControl, ValidatorFn } from '@angular/forms';
-
 // פונקציית ולידציה כללית
 export function isValidControl(control: AbstractControl): boolean {
   return control && control.value !== null && control.value !== '';
@@ -55,10 +54,10 @@ export function nameValidator(control: AbstractControl): { [key: string]: any } 
 
   return value && !isValid ? { 'invalid': true } : null; // אם השם מכיל רק אותיות, החזר תקינות, אחרת החזר הודעת שגיאה
 }
-// ... קוד קודם
 
 export function dateValidator(control: AbstractControl): { [key: string]: any } | null {
   const d: Date = new Date(control.value);
+  console.log("d",d)
   const currentDate: Date = new Date();
   const age = currentDate.getFullYear() - d.getFullYear();
 
@@ -75,7 +74,6 @@ export function validateEntryDate(control: AbstractControl, startOfWorkDate: Dat
   console.log(
     entryDate < startOfWorkDate
   );
-  console.log("invalid!!!!!!!!!!!!!!!!!!!!")
   return (entryDate < startOfWorkDate) ? { 'invalidEntryDate': true }
     // return { invalidEntryDate: true, message: 'Entry date must be after start of work date' };
     : null;

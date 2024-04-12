@@ -28,7 +28,7 @@
 
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Route, RouterModule, Routes } from '@angular/router';
+import { Route, RouterModule, Routes,Router } from '@angular/router';
 
 import { EmployeesComponent } from './components/employees/employees.component';
 import { AddEmployeeComponent } from './components/add-employee/add-employee.component';

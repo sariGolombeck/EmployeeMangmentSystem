@@ -2,10 +2,16 @@
   <mat-label>Search</mat-label>
   <input matInput (keyup)="applyFilter($event)" placeholder="Search for employees" #input>
 </mat-form-field>
+<button mat-icon-button (click)="addEmployee()" class="add-contact-button">
+  <mat-icon>person_add</mat-icon> 
+</button>
 
 <div class="mat-elevation-z8 table-container">
   <table mat-table [dataSource]="dataSource" matSort>
-
+    <th mat-header-cell *matHeaderCellDef>
+      <mat-icon (click)="addEmployee()">add</mat-icon>
+    </th>
+    
     <!-- ID Column -->
     <ng-container matColumnDef="identity">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>

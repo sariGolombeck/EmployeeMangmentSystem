@@ -11,7 +11,7 @@ import { identity } from 'rxjs';
 import { error } from 'console';
 import { PositionEmployeeTableComponent } from '../positions-employee-table/positions-employee-table.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Gender } from '../../models/employee';
 import { dateValidator, identityValidator, nameValidator } from '../../../validtaionTest/validation';
 @Component({
@@ -26,14 +26,20 @@ export class UpdateEmployeeComponent implements OnInit {
   allPositions: Position[] = [];
   constructor(private _employeeService: EmployeeService,
     private _positionService: PositionService,
-    private _formBuilder: FormBuilder, private _snackBar: MatSnackBar,
-    private route: ActivatedRoute) {
+    private _formBuilder: FormBuilder,
+    private route: ActivatedRoute,
+    private _router:Router) {
 
   }
   employeeId!: number
   pe: PositionEmployeePostModel[] = []
   peForms: FormGroup[] = [];
   ngOnInit(): void {
+    // if(sessionStorage.getItem('token') == null){
+    //       this._router.navigate(['/login']);
+
+    // }
+
     this.route.params.subscribe(params => {
       this.employeeId = +params['id'];
     });
@@ -84,7 +90,6 @@ export class UpdateEmployeeComponent implements OnInit {
       gender: [this.employee.gender, Validators.required],
       // positions: [this.employee.positions, Validators.required],
     });
-    console.log("the employee form.??????????????????????........", this.employee);
     console.log(this.employee);
   }
   positions: Position[] = [];
@@ -117,27 +122,12 @@ export class UpdateEmployeeComponent implements OnInit {
       positionId: [pee.positionId, Validators.required],
       entryDateIntoOffice: [pee.entryDateIntoOffice, Validators.required],
       isManagerial: [pee.ismanagerial]
-    }); console.log("peeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee only", this.pe)
+    });
 
     console.log("nowwwwwwwwwwwwwwww4444444444", positionEmployee)
     this.peForms.push(positionEmployee);
-    console.log("nowwwwwwwwwwwwwwwwwwww3333333333333", this.peForms)
     console.log("peeforms", this.peForms)
   }
-  // gg(position: Position) {
-
-  //   console.log("pay attation", this.positions.map(x => x.description))
-  //   var tmp = this.positions;
-  //   this.positions = tmp.filter(x => x.id != position.id);
-  //   if (tmp.length === this.positions.length) {
-  //     console.log("enterd: tmp", tmp.map(x => x), "mypositions", this.positions.map(x => x.name));
-  //     this.addPositionEmployeeForm(position.id);
-  //     this.positions.push(position)
-  //     this.positionEmployee.push()
-  //   }
-  //   console.log("");
-  // }
-  // this.addPositionEmployeeForm();
   onDateChange(selectedDate: any, index: number) {
     this.positionEmployee[index].entryDateIntoOffice = selectedDate;
     this.form.markAsDirty();
@@ -145,16 +135,27 @@ export class UpdateEmployeeComponent implements OnInit {
   updateIsManagerialState(index: number, isChecked: boolean) {
     this.positionEmployeeForms.controls[index].get('ismanagerial').setValue(isChecked);
   }
+  saveBeforeChoosingPositions()
+  {
+    if(this.employeeForm.invalid){
+      return;
+    }
+    const newEmployee={
+      ...this.form?.value
+    }
+    this._employeeService.updateEmployee(this.employeeId,newEmployee).subscribe({
 
-  // initPositionEmployeeForm(): void {
-  //   this.positionEmployeeForm = this._formBuilder.group({
-  //     id: [null, Validators.required],
-  //     entryDateIntoOffice: [Date, Validators.required],
-  //     isManagerial: [false] // Default value
-  //   });
-  //   this.positionEmployee.push(this.positionEmployeeForm);
+      next: (data: any) => { console.log(data); this.newEmployee = data 
+this._router.navigate(["/login"])
 
-  // }
+
+      },
+      error: (e: Error) => {
+        console.error(e);
+        console.error('Failed to add employee');
+      },
+    })
+  }
 
   addPositionFormGroup(position: Position) {
     const positionFormGroup = this._formBuilder.group({
@@ -168,17 +169,6 @@ export class UpdateEmployeeComponent implements OnInit {
     console.log("all ppostint int  ", this.allPositions)
   }
   onSubmit() {
-    console.log("peeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee only", this.pe)
-
-    // const positionEmployees: PositionEmployeePostModel[] = this.positionEmployeeForms.value.map((form: any) => ({
-    //   positionId: form.positionId,
-    //   entryDateIntoOffice: form.entryDateIntoOffice,
-    //   isManagerial: form.isManagerial
-    // }
-
-    // ));
-
-
 
 
 

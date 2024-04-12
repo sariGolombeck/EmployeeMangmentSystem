@@ -37,7 +37,8 @@ export class PositionEmployeeTableComponent implements OnInit {
     public dialog: MatDialog,
     private _snackBar: MatSnackBar,
     private route: ActivatedRoute,
-    private positionService: PositionService
+    private positionService: PositionService,
+    private _router:Router
   ) {
     this.dataSource = new MatTableDataSource<PositionEmployeeDto>([]);
   }
@@ -133,6 +134,8 @@ export class PositionEmployeeTableComponent implements OnInit {
     this.updatePosition(result);//אחר כך להעביר את זה בSUBMIT לSERVICE של הPUTץ
   }
   deletePosition(row: PositionEmployeeDto) {
+    if(sessionStorage.getItem("token")=="")
+    this._router.navigate(['/login'])
     const confirmDelete = confirm('Are you sure you want to delete this position?');
     if (confirmDelete) {
       this._employeeService.deletePositionEmployee(row.employeeId, row.positionId).subscribe({

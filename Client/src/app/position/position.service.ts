@@ -14,10 +14,7 @@ export class PositionService {
   //   return this.http.get<Position[]>(this.basicUrl)
   getPositions(): Observable<Position[]> {
     console.log("the service")
-    return this.http.get<Position[]>(this.basicUrl)
-    // .pipe(
-    //   tap(x => console.log('lalla value:', x,"qqqq")) // Log intermediate value
-    // );
+    return  this.http.get<Position[]>(this.basicUrl)
 
   }
   addPosition(position: Position): Observable<Position> {

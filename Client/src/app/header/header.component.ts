@@ -1,11 +1,9 @@
 import { Component } from '@angular/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
-import { MatIcon } from '@angular/material/icon';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatMenu } from '@angular/material/menu';
-import { MatMenuTrigger } from '@angular/material/menu';
-import { MatMenuPanel } from '@angular/material/menu';
+import { MatIcon } from '@angular/material/icon'  ;
+// import { MatMenuModule } from '@angular/material/menu';
+// import { MatMenu } from '@angular/material/menu';
 // import { Router } from 'express';
 // @Component({
 //   selector: 'app-header',
@@ -29,13 +27,16 @@ import { HttpClientModule } from '@angular/common/http';
   selector: 'app-header',
   standalone: true,
   imports: [MatToolbarModule,
-        MatButtonModule,MatIcon,MatMenuModule, MatMenu,MatMenuTrigger,HttpClientModule],
+        MatButtonModule,MatIcon,HttpClientModule],
         providers:[EmployeeService],
   // imports: [MatToolbarModule, MatButtonModule, MatMenuModule],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
+addPosition() {
+this.router.navigate(['positions/add-position']);
+}
   constructor(private router: Router,private _employeeService: EmployeeService) {}
 
   // הוסף הגדרת פעולה עבור לחצן "רשימת עובדים"
@@ -59,17 +60,19 @@ export class HeaderComponent {
     XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
     XLSX.writeFile(wb, `${filename}.xlsx`);
   }
-
-  onEmployeesListClick() {
-    // ניווט לנתיב "employees"
+  onAllEmployees(){
     this.router.navigate(['employees']);
-
-    // או ביצוע פעולה אחרת בהתאם לצורך
   }
+  // onEmployeesListClick() {
+  //   // ניווט לנתיב "employees"
+  //   this.router.navigate(['employees']);
+
+  //   // או ביצוע פעולה אחרת בהתאם לצורך
+  // }
 
   onAddEmployeeClick() {
     // ניווט לנתיב "employees"
-    this.router.navigate(['add-employee']);
+    this.router.navigate(['/add-employee']);
     }
   onHomeClick() {
     // ניווט לנתיב "employees"
@@ -80,8 +83,6 @@ export class HeaderComponent {
   onLoginClick(){
     console.log("ddsa")
     this.router.navigate(["/login"]);
-
   }
-  
   
 }

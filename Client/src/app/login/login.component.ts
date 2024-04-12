@@ -9,6 +9,7 @@ import { HttpClient, HttpClientModule, HttpHandler, HttpHeaderResponse } from '@
 
 import { User } from '../user';
 import { LoginService } from '../login.service';
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-user',
   templateUrl: './login.component.html',
@@ -21,7 +22,9 @@ export class LoginComponent implements OnInit {
 
   userForm!: FormGroup;
 
-  constructor(private _loginService: LoginService) { }
+  constructor(private _loginService: LoginService,
+    private location: Location
+  ) { }
 
   ngOnInit(): void {
     this.userForm = new FormGroup({
@@ -38,6 +41,8 @@ export class LoginComponent implements OnInit {
         console.log('User logged in successfully:', response);
         const token = response.token;
         sessionStorage.setItem('token', token);
+        this.location.back()
+
       },
       error: (error) => { 
         console.error('Error logging in user:', error);

@@ -83,3 +83,20 @@ C:\Users\User\Desktop\הפרויקט1\EmployeeMangmentSystem\Server\Server.Data\
 C:\Users\User\Desktop\הפרויקט1\EmployeeMangmentSystem\Server\Server.Data\obj\Debug\net6.0\Server.Data.pdb
 C:\Users\User\Desktop\הפרויקט1\EmployeeMangmentSystem\Server\Server.Data\obj\Debug\net6.0\Server.Data.genruntimeconfig.cache
 C:\Users\User\Desktop\הפרויקט1\EmployeeMangmentSystem\Server\Server.Data\obj\Debug\net6.0\ref\Server.Data.dll
+C:\Users\User\Desktop\הפרויקט1\הפרויקט 4\EmployeeMangmentSystem\Server\Server.Data\bin\Debug\net6.0\Server.Data.deps.json
+C:\Users\User\Desktop\הפרויקט1\הפרויקט 4\EmployeeMangmentSystem\Server\Server.Data\bin\Debug\net6.0\Server.Data.runtimeconfig.json
+C:\Users\User\Desktop\הפרויקט1\הפרויקט 4\EmployeeMangmentSystem\Server\Server.Data\bin\Debug\net6.0\Server.Data.dll
+C:\Users\User\Desktop\הפרויקט1\הפרויקט 4\EmployeeMangmentSystem\Server\Server.Data\bin\Debug\net6.0\Server.Data.pdb
+C:\Users\User\Desktop\הפרויקט1\הפרויקט 4\EmployeeMangmentSystem\Server\Server.Data\bin\Debug\net6.0\Server.Core.dll
+C:\Users\User\Desktop\הפרויקט1\הפרויקט 4\EmployeeMangmentSystem\Server\Server.Data\bin\Debug\net6.0\Server.Core.pdb
+C:\Users\User\Desktop\הפרויקט1\הפרויקט 4\EmployeeMangmentSystem\Server\Server.Data\obj\Debug\net6.0\Server.Data.csproj.AssemblyReference.cache
+C:\Users\User\Desktop\הפרויקט1\הפרויקט 4\EmployeeMangmentSystem\Server\Server.Data\obj\Debug\net6.0\Server.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\Desktop\הפרויקט1\הפרויקט 4\EmployeeMangmentSystem\Server\Server.Data\obj\Debug\net6.0\Server.Data.AssemblyInfoInputs.cache
+C:\Users\User\Desktop\הפרויקט1\הפרויקט 4\EmployeeMangmentSystem\Server\Server.Data\obj\Debug\net6.0\Server.Data.AssemblyInfo.cs
+C:\Users\User\Desktop\הפרויקט1\הפרויקט 4\EmployeeMangmentSystem\Server\Server.Data\obj\Debug\net6.0\Server.Data.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\הפרויקט1\הפרויקט 4\EmployeeMangmentSystem\Server\Server.Data\obj\Debug\net6.0\Server.Data.csproj.CopyComplete
+C:\Users\User\Desktop\הפרויקט1\הפרויקט 4\EmployeeMangmentSystem\Server\Server.Data\obj\Debug\net6.0\Server.Data.dll
+C:\Users\User\Desktop\הפרויקט1\הפרויקט 4\EmployeeMangmentSystem\Server\Server.Data\obj\Debug\net6.0\refint\Server.Data.dll
+C:\Users\User\Desktop\הפרויקט1\הפרויקט 4\EmployeeMangmentSystem\Server\Server.Data\obj\Debug\net6.0\Server.Data.pdb
+C:\Users\User\Desktop\הפרויקט1\הפרויקט 4\EmployeeMangmentSystem\Server\Server.Data\obj\Debug\net6.0\Server.Data.genruntimeconfig.cache
+C:\Users\User\Desktop\הפרויקט1\הפרויקט 4\EmployeeMangmentSystem\Server\Server.Data\obj\Debug\net6.0\ref\Server.Data.dll
