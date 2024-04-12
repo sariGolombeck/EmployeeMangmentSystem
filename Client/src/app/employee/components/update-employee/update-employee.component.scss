@@ -1,0 +1,14 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* גובה מלא של העמוד */
+  }
+  
+  .stepper {
+    background-color: #fff; /* צבע רקע */
+    border-radius: 20px; /* פינות מעוגלות */
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1); /* צל */
+    padding: 40px; /* רווח פנימי */
+  }
+  

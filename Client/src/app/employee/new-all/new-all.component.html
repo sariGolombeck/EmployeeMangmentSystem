@@ -1,0 +1,252 @@
+<mat-stepper orientation="vertical" [linear]="isLinear" #stepper>
+
+  <!-- Step 1: Fill out your identity number -->
+  <mat-step [stepControl]="form.controls['identity']">
+    <ng-template matStepLabel>Fill out your identity number</ng-template>
+    <form [formGroup]="form">
+      <mat-form-field>
+        <mat-label>Identity Number</mat-label>
+        <input matInput formControlName="identity" placeholder="Enter your identity number" required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <!-- Step 2: Fill out your name -->
+  <mat-step [stepControl]="form.controls['firstName']">
+    <ng-template matStepLabel>Fill out your name</ng-template>
+    <form [formGroup]="form">
+      <mat-form-field>
+        <mat-label>First Name</mat-label>
+        <input matInput placeholder="Enter your first name" formControlName="firstName" required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <!-- Step 3: Last name -->
+  <mat-step [stepControl]="form.controls['lastName']">
+    <ng-template matStepLabel>Last name</ng-template>
+    <form [formGroup]="form">
+      <mat-form-field>
+        <mat-label>Last Name</mat-label>
+        <input matInput formControlName="lastName" placeholder="Enter your last name" required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <!-- Step 4: Fill out your address -->
+  <mat-step [stepControl]="form.controls['address']">
+    <ng-template matStepLabel>Fill out your address</ng-template>
+    <form [formGroup]="form">
+      <mat-form-field>
+        <mat-label>Address</mat-label>
+        <input matInput formControlName="address" placeholder="Enter your address" required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <!-- Step 5: Birthdate -->
+  <mat-step [stepControl]="form.controls['birthdate']">
+    <ng-template matStepLabel>Birthdate</ng-template>
+    <form [formGroup]="form">
+      <mat-form-field>
+        <mat-label>Date of Birth</mat-label>
+        <input matInput [matDatepicker]="picker1" placeholder="Enter your date of birth" formControlName="birthdate" required>
+        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <!-- Step 6: Gender -->
+  <mat-step>
+    <ng-template matStepLabel>Gender</ng-template>
+    <form [formGroup]="form">
+      <mat-radio-group formControlName="gender">
+        <mat-radio-button [checked]="form.controls['gender'].value.male" [value]="{male: true}">Male</mat-radio-button>
+        <mat-radio-button [checked]="form.controls['gender'].value.female" [value]="{male: false, female: true}">Female</mat-radio-button>
+      </mat-radio-group>
+  
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <!-- Step 7: Select Roles -->
+  <mat-step [stepControl]="form.controls['positions']">
+    <ng-template matStepLabel>Select Roles</ng-template>
+    <form [formGroup]="form">
+      <mat-form-field>
+        <mat-label>Select Roles</mat-label>
+        <mat-select placeholder="Select roles" formControlName="positions" multiple required>
+          <mat-option *ngFor="let position of positions" [value]="position">{{ position.positionName.name }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+
+      <mat-checkbox formControlName="isAdminstrative">Management Role</mat-checkbox>
+      <mat-form-field>
+        <mat-label>Date of Entry to the Role</mat-label>
+        <input matInput [matDatepicker]="picker" placeholder="Enter date of entry" formControlName="startOfWorkDate" required>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+
+
+
+  
+
+  
+  <!-- Step 8: Final step with submission -->
+  <mat-step>
+    <ng-template matStepLabel>Review and Submit</ng-template>
+    <form [formGroup]="form">
+      <!-- Display selected roles for review -->
+      <p>Selected Roles:</p>
+      <ul>
+        <li *ngFor="let role of form.get('roles')?.value">{{ role.positionName.name }}</li>
+      </ul>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="onSubmit()">Submit</button>
+      </div>
+    </form>
+  </mat-step>
+</mat-stepper>
+
+
+-----------------------טבלה ראשית-----------------------
+<!-- positions-employee-table.component.html -->
+
+<p>Actions</p>
+<mat-form-field>
+  <mat-label>Filter</mat-label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+</mat-form-field>
+
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" matSort>
+
+    <!-- Position ID Column -->
+    <ng-container matColumnDef="positionId">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Position ID </th>
+      <td mat-cell *matCellDef="let row"> {{row.positionId}} </td>
+    </ng-container>
+
+    <!-- Entry Date Into Office Column -->
+    <ng-container matColumnDef="entryDateIntoOffice">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Entry Date Into Office </th>
+      <td mat-cell *matCellDef="let row"> {{row.entryDateIntoOffice}} </td>
+    </ng-container>
+
+    <!-- Is Managerial Column -->
+    <ng-container matColumnDef="ismanagerial">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Is Managerial </th>
+      <td mat-cell *matCellDef="let row"> {{row.ismanagerial}} </td>
+    </ng-container>
+
+    <!-- Actions Column -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Actions </th>
+      <td mat-cell *matCellDef="let row">
+        <button mat-icon-button (click)="editPosition(row)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button (click)="deletePosition(row)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    <!-- Row shown when there is no matching data. -->
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+    </tr>
+  </table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+</div>
+
+
+-=-------------------------2-----------------------
+<!-- positions-employee-table.component.html -->
+
+<p>Actions</p>
+<mat-form-field>
+  <mat-label>Filter</mat-label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+</mat-form-field>
+
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" matSort>
+
+    <!-- Position ID Column -->
+    <ng-container matColumnDef="positionId">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Position ID </th>
+      <td mat-cell *matCellDef="let row"> {{row.positionId}} </td>
+    </ng-container>
+
+    <!-- Entry Date Into Office Column -->
+    <ng-container matColumnDef="entryDateIntoOffice">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Entry Date Into Office </th>
+      <td mat-cell *matCellDef="let row"> {{row.entryDateIntoOffice}} </td>
+    </ng-container>
+
+    <!-- Is Managerial Column -->
+    <ng-container matColumnDef="ismanagerial">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Is Managerial </th>
+      <td mat-cell *matCellDef="let row"> {{row.ismanagerial}} </td>
+    </ng-container>
+
+    <!-- Actions Column -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Actions </th>
+      <td mat-cell *matCellDef="let row">
+        <button mat-icon-button (click)="editPosition(row)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button (click)="deletePosition(row)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    <!-- Row shown when there is no matching data. -->
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+    </tr>
+  </table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+</div>

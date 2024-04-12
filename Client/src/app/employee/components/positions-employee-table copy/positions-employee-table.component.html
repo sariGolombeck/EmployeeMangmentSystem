@@ -1,0 +1,83 @@
+<!-- <div class="container">
+  <button mat-raised-button color="primary" (click)="openAddPositionDialog()">הוספת תפקיד לעובד</button>
+  <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+    <ng-container matColumnDef="positionId">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> מזהה תפקיד </th>
+      <td mat-cell *matCellDef="let element"> {{element.positionId}} </td>
+    </ng-container>
+    <ng-container matColumnDef="entryDateIntoOffice">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> תאריך כניסה לתפקיד </th>
+      <td mat-cell *matCellDef="let element"> {{element.entryDateIntoOffice | date}} </td>
+    </ng-container>
+    <ng-container matColumnDef="ismanagerial">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> האם מנהלי </th>
+      <td mat-cell *matCellDef="let element"> {{element.ismanagerial ? 'כן' : 'לא'}} </td>
+    </ng-container>
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> פעולות </th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-icon-button color="primary" (click)="editPosition(element)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" (click)="deletePosition(element)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div> -->
+<p>Actions</p>
+<mat-form-field>
+  <mat-label>Filter</mat-label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+</mat-form-field>
+
+<div class="mat-elevation-z8">
+  <button mat-raised-button (click)="openPositionSelectionDialog()">Add New Position</button>
+  <table mat-table [dataSource]="dataSource" matSort>
+
+    <!-- Position ID Column -->
+    <ng-container matColumnDef="positionId">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Position ID </th>
+      <td mat-cell *matCellDef="let row"> {{row.positionId}} </td>
+    </ng-container>
+
+    <!-- Entry Date Into Office Column -->
+    <ng-container matColumnDef="entryDateIntoOffice">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Entry Date Into Office </th>
+      <td mat-cell *matCellDef="let row"> {{row.entryDateIntoOffice}} </td>
+    </ng-container>
+
+    <!-- Is Managerial Column -->
+    <ng-container matColumnDef="ismanagerial">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Is Managerial </th>
+      <td mat-cell *matCellDef="let row"> {{row.ismanagerial}} </td>
+    </ng-container>
+
+    <!-- Actions Column -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Actions </th>
+      <td mat-cell *matCellDef="let row">
+        <button mat-icon-button (click)="editPosition(row)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button (click)="deletePosition(row)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    <!-- Row shown when there is no matching data. -->
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+    </tr>
+  </table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+</div>
+
