@@ -1,0 +1,60 @@
+C:\Users\User\Desktop\תכנות שרי שנה ב'\Practicume\Server\Servec.Core\obj\Debug\net6.0\Server.Core.csproj.AssemblyReference.cache
+C:\Users\User\Desktop\תכנות שרי שנה ב'\Practicume\Server\Servec.Core\obj\Debug\net6.0\Server.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\Desktop\תכנות שרי שנה ב'\Practicume\Server\Servec.Core\obj\Debug\net6.0\Server.Core.AssemblyInfoInputs.cache
+C:\Users\User\Desktop\תכנות שרי שנה ב'\Practicume\Server\Servec.Core\obj\Debug\net6.0\Server.Core.AssemblyInfo.cs
+C:\Users\User\Desktop\תכנות שרי שנה ב'\Practicume\Server\Servec.Core\obj\Debug\net6.0\Server.Core.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\תכנות שרי שנה ב'\Practicume\Server\Servec.Core\bin\Debug\net6.0\Server.Core.deps.json
+C:\Users\User\Desktop\תכנות שרי שנה ב'\Practicume\Server\Servec.Core\bin\Debug\net6.0\Server.Core.dll
+C:\Users\User\Desktop\תכנות שרי שנה ב'\Practicume\Server\Servec.Core\bin\Debug\net6.0\Server.Core.pdb
+C:\Users\User\Desktop\תכנות שרי שנה ב'\Practicume\Server\Servec.Core\obj\Debug\net6.0\Server.Core.dll
+C:\Users\User\Desktop\תכנות שרי שנה ב'\Practicume\Server\Servec.Core\obj\Debug\net6.0\refint\Server.Core.dll
+C:\Users\User\Desktop\תכנות שרי שנה ב'\Practicume\Server\Servec.Core\obj\Debug\net6.0\Server.Core.pdb
+C:\Users\User\Desktop\תכנות שרי שנה ב'\Practicume\Server\Servec.Core\obj\Debug\net6.0\ref\Server.Core.dll
+C:\Users\User\Desktop\תכנות שרי שנה ב'\Practicume\new SERVER\Server\Servec.Core\bin\Debug\net6.0\Server.Core.deps.json
+C:\Users\User\Desktop\תכנות שרי שנה ב'\Practicume\new SERVER\Server\Servec.Core\bin\Debug\net6.0\Server.Core.dll
+C:\Users\User\Desktop\תכנות שרי שנה ב'\Practicume\new SERVER\Server\Servec.Core\bin\Debug\net6.0\Server.Core.pdb
+C:\Users\User\Desktop\תכנות שרי שנה ב'\Practicume\new SERVER\Server\Servec.Core\obj\Debug\net6.0\Server.Core.csproj.AssemblyReference.cache
+C:\Users\User\Desktop\תכנות שרי שנה ב'\Practicume\new SERVER\Server\Servec.Core\obj\Debug\net6.0\Server.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\Desktop\תכנות שרי שנה ב'\Practicume\new SERVER\Server\Servec.Core\obj\Debug\net6.0\Server.Core.AssemblyInfoInputs.cache
+C:\Users\User\Desktop\תכנות שרי שנה ב'\Practicume\new SERVER\Server\Servec.Core\obj\Debug\net6.0\Server.Core.AssemblyInfo.cs
+C:\Users\User\Desktop\תכנות שרי שנה ב'\Practicume\new SERVER\Server\Servec.Core\obj\Debug\net6.0\Server.Core.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\תכנות שרי שנה ב'\Practicume\new SERVER\Server\Servec.Core\obj\Debug\net6.0\Server.Core.dll
+C:\Users\User\Desktop\תכנות שרי שנה ב'\Practicume\new SERVER\Server\Servec.Core\obj\Debug\net6.0\refint\Server.Core.dll
+C:\Users\User\Desktop\תכנות שרי שנה ב'\Practicume\new SERVER\Server\Servec.Core\obj\Debug\net6.0\Server.Core.pdb
+C:\Users\User\Desktop\תכנות שרי שנה ב'\Practicume\new SERVER\Server\Servec.Core\obj\Debug\net6.0\ref\Server.Core.dll
+C:\Users\User\Desktop\תכנות שרי שנה ב'\Practicume\new SERVER\בסד אחר ליתר ביטחון\ועוד שניים\Server\Servec.Core\bin\Debug\net6.0\Server.Core.deps.json
+C:\Users\User\Desktop\תכנות שרי שנה ב'\Practicume\new SERVER\בסד אחר ליתר ביטחון\ועוד שניים\Server\Servec.Core\bin\Debug\net6.0\Server.Core.dll
+C:\Users\User\Desktop\תכנות שרי שנה ב'\Practicume\new SERVER\בסד אחר ליתר ביטחון\ועוד שניים\Server\Servec.Core\bin\Debug\net6.0\Server.Core.pdb
+C:\Users\User\Desktop\תכנות שרי שנה ב'\Practicume\new SERVER\בסד אחר ליתר ביטחון\ועוד שניים\Server\Servec.Core\obj\Debug\net6.0\Server.Core.csproj.AssemblyReference.cache
+C:\Users\User\Desktop\תכנות שרי שנה ב'\Practicume\new SERVER\בסד אחר ליתר ביטחון\ועוד שניים\Server\Servec.Core\obj\Debug\net6.0\Server.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\Desktop\תכנות שרי שנה ב'\Practicume\new SERVER\בסד אחר ליתר ביטחון\ועוד שניים\Server\Servec.Core\obj\Debug\net6.0\Server.Core.AssemblyInfoInputs.cache
+C:\Users\User\Desktop\תכנות שרי שנה ב'\Practicume\new SERVER\בסד אחר ליתר ביטחון\ועוד שניים\Server\Servec.Core\obj\Debug\net6.0\Server.Core.AssemblyInfo.cs
+C:\Users\User\Desktop\תכנות שרי שנה ב'\Practicume\new SERVER\בסד אחר ליתר ביטחון\ועוד שניים\Server\Servec.Core\obj\Debug\net6.0\Server.Core.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\תכנות שרי שנה ב'\Practicume\new SERVER\בסד אחר ליתר ביטחון\ועוד שניים\Server\Servec.Core\obj\Debug\net6.0\Server.Core.dll
+C:\Users\User\Desktop\תכנות שרי שנה ב'\Practicume\new SERVER\בסד אחר ליתר ביטחון\ועוד שניים\Server\Servec.Core\obj\Debug\net6.0\refint\Server.Core.dll
+C:\Users\User\Desktop\תכנות שרי שנה ב'\Practicume\new SERVER\בסד אחר ליתר ביטחון\ועוד שניים\Server\Servec.Core\obj\Debug\net6.0\Server.Core.pdb
+C:\Users\User\Desktop\תכנות שרי שנה ב'\Practicume\new SERVER\בסד אחר ליתר ביטחון\ועוד שניים\Server\Servec.Core\obj\Debug\net6.0\ref\Server.Core.dll
+C:\Users\User\Desktop\תכנות שרי שנה ב'\Practicume\new SERVER\בסד אחר ליתר ביטחון\‏‏תיקיה חדשה\EmployeeManagmentSystem\Server\Servec.Core\bin\Debug\net6.0\Server.Core.deps.json
+C:\Users\User\Desktop\תכנות שרי שנה ב'\Practicume\new SERVER\בסד אחר ליתר ביטחון\‏‏תיקיה חדשה\EmployeeManagmentSystem\Server\Servec.Core\bin\Debug\net6.0\Server.Core.dll
+C:\Users\User\Desktop\תכנות שרי שנה ב'\Practicume\new SERVER\בסד אחר ליתר ביטחון\‏‏תיקיה חדשה\EmployeeManagmentSystem\Server\Servec.Core\bin\Debug\net6.0\Server.Core.pdb
+C:\Users\User\Desktop\תכנות שרי שנה ב'\Practicume\new SERVER\בסד אחר ליתר ביטחון\‏‏תיקיה חדשה\EmployeeManagmentSystem\Server\Servec.Core\obj\Debug\net6.0\Server.Core.csproj.AssemblyReference.cache
+C:\Users\User\Desktop\תכנות שרי שנה ב'\Practicume\new SERVER\בסד אחר ליתר ביטחון\‏‏תיקיה חדשה\EmployeeManagmentSystem\Server\Servec.Core\obj\Debug\net6.0\Server.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\Desktop\תכנות שרי שנה ב'\Practicume\new SERVER\בסד אחר ליתר ביטחון\‏‏תיקיה חדשה\EmployeeManagmentSystem\Server\Servec.Core\obj\Debug\net6.0\Server.Core.AssemblyInfoInputs.cache
+C:\Users\User\Desktop\תכנות שרי שנה ב'\Practicume\new SERVER\בסד אחר ליתר ביטחון\‏‏תיקיה חדשה\EmployeeManagmentSystem\Server\Servec.Core\obj\Debug\net6.0\Server.Core.AssemblyInfo.cs
+C:\Users\User\Desktop\תכנות שרי שנה ב'\Practicume\new SERVER\בסד אחר ליתר ביטחון\‏‏תיקיה חדשה\EmployeeManagmentSystem\Server\Servec.Core\obj\Debug\net6.0\Server.Core.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\תכנות שרי שנה ב'\Practicume\new SERVER\בסד אחר ליתר ביטחון\‏‏תיקיה חדשה\EmployeeManagmentSystem\Server\Servec.Core\obj\Debug\net6.0\Server.Core.dll
+C:\Users\User\Desktop\תכנות שרי שנה ב'\Practicume\new SERVER\בסד אחר ליתר ביטחון\‏‏תיקיה חדשה\EmployeeManagmentSystem\Server\Servec.Core\obj\Debug\net6.0\refint\Server.Core.dll
+C:\Users\User\Desktop\תכנות שרי שנה ב'\Practicume\new SERVER\בסד אחר ליתר ביטחון\‏‏תיקיה חדשה\EmployeeManagmentSystem\Server\Servec.Core\obj\Debug\net6.0\Server.Core.pdb
+C:\Users\User\Desktop\תכנות שרי שנה ב'\Practicume\new SERVER\בסד אחר ליתר ביטחון\‏‏תיקיה חדשה\EmployeeManagmentSystem\Server\Servec.Core\obj\Debug\net6.0\ref\Server.Core.dll
+C:\Users\User\Desktop\הפרויקט1\EmployeeMangmentSystem\Server\Servec.Core\bin\Debug\net6.0\Server.Core.deps.json
+C:\Users\User\Desktop\הפרויקט1\EmployeeMangmentSystem\Server\Servec.Core\bin\Debug\net6.0\Server.Core.dll
+C:\Users\User\Desktop\הפרויקט1\EmployeeMangmentSystem\Server\Servec.Core\bin\Debug\net6.0\Server.Core.pdb
+C:\Users\User\Desktop\הפרויקט1\EmployeeMangmentSystem\Server\Servec.Core\obj\Debug\net6.0\Server.Core.csproj.AssemblyReference.cache
+C:\Users\User\Desktop\הפרויקט1\EmployeeMangmentSystem\Server\Servec.Core\obj\Debug\net6.0\Server.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\Desktop\הפרויקט1\EmployeeMangmentSystem\Server\Servec.Core\obj\Debug\net6.0\Server.Core.AssemblyInfoInputs.cache
+C:\Users\User\Desktop\הפרויקט1\EmployeeMangmentSystem\Server\Servec.Core\obj\Debug\net6.0\Server.Core.AssemblyInfo.cs
+C:\Users\User\Desktop\הפרויקט1\EmployeeMangmentSystem\Server\Servec.Core\obj\Debug\net6.0\Server.Core.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\הפרויקט1\EmployeeMangmentSystem\Server\Servec.Core\obj\Debug\net6.0\Server.Core.dll
+C:\Users\User\Desktop\הפרויקט1\EmployeeMangmentSystem\Server\Servec.Core\obj\Debug\net6.0\refint\Server.Core.dll
+C:\Users\User\Desktop\הפרויקט1\EmployeeMangmentSystem\Server\Servec.Core\obj\Debug\net6.0\Server.Core.pdb
+C:\Users\User\Desktop\הפרויקט1\EmployeeMangmentSystem\Server\Servec.Core\obj\Debug\net6.0\ref\Server.Core.dll
