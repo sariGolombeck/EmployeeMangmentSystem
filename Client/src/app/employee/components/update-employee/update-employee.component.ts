@@ -1,19 +1,15 @@
 
 import { Component, OnInit } from '@angular/core';
-import { MatAccordion } from '@angular/material/expansion';
-import { EmployeeService } from '../../employee.service';
-import { Employee } from '../../models/employee';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { PositionService } from '../../../position/position.service';
-import { Position } from '../../../position/models/position';
-import { PositionEmployeePostModel } from '../../../position-employee-post-model';
-import { identity } from 'rxjs';
-import { error } from 'console';
-import { PositionEmployeeTableComponent } from '../positions-employee-table/positions-employee-table.component';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Gender } from '../../models/employee';
+import { EmployeeService } from '../../employee.service';
+import { PositionService } from '../../../position/position.service';
+import { PositionEmployeePostModel } from '../../models/position-employee-post-model';
+import { Position } from '../../../position/models/position';
+import { Employee } from '../../models/employee';
 import { dateValidator, identityValidator, nameValidator } from '../../../validtaionTest/validation';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 @Component({
   selector: 'app-update-employee',
   templateUrl: './update-employee.component.html',
@@ -24,51 +20,32 @@ export class UpdateEmployeeComponent implements OnInit {
   employeeForm!: FormGroup;
   isLinear!: boolean;
   allPositions: Position[] = [];
+  employeeId!: number
+  pe: PositionEmployeePostModel[] = []
+  peForms: FormGroup[] = [];
+  isLeanar: unknown;
+
   constructor(private _employeeService: EmployeeService,
     private _positionService: PositionService,
     private _formBuilder: FormBuilder,
     private route: ActivatedRoute,
-    private _router:Router) {
+    private _snackBar: MatSnackBar,
+    private _router: Router) { }
 
-  }
-  employeeId!: number
-  pe: PositionEmployeePostModel[] = []
-  peForms: FormGroup[] = [];
   ngOnInit(): void {
-    // if(sessionStorage.getItem('token') == null){
-    //       this._router.navigate(['/login']);
-
-    // }
-
+    if (sessionStorage.getItem("token") == "") { this._router.navigate(['/login']) }
     this.route.params.subscribe(params => {
       this.employeeId = +params['id'];
     });
-    this._employeeService.getEmployeeById(this.employeeId).subscribe({
-      next: (data) => {
-        this.employee = data;
-        this.buildForm(); // Call form building function after employee data is retrieved
-      },
-      error: (err) => {
-        console.error('Error fetching employee:', err);
-      }
-    });
-    this._employeeService.getEmployeePositions(this.employeeId).subscribe({
-      next: (data) => {
-        data.forEach((pee: PositionEmployeePostModel) => {
-          this.pe.push(pee);
+    this.getEmployeePositions();
+    this.getEmployeeById();
+    this.getPositions();
+  }
 
-          this.addPositionEmployeeForm(pee);
-        })
-      },
-      error: (err) => {
-        console.error('Error fetching employee:', err);
-      }
-    })
-
+  getPositions() {
     this._positionService.getPositions().subscribe({
       next: (data) => {
         data.forEach((position: Position) => {
-          console.log("get from server this", position)
           this.allPositions.push(position);
           this.addPositionFormGroup(position);
         });
@@ -77,78 +54,109 @@ export class UpdateEmployeeComponent implements OnInit {
     });
   }
 
+  getEmployeePositions() {
+    this._employeeService.getEmployeePositions(this.employeeId).subscribe({
+      next: (data) => {
+        data.forEach((pee: PositionEmployeePostModel) => {
+          this.pe.push(pee);
+          this.addPositionEmployeeForm(pee);
+        });
+      },
+      error: (err) => {
+        console.error('Error fetching employee:', err);
+      }
+    });
+  }
 
+  getEmployeeById() {
+    this._employeeService.getEmployeeById(this.employeeId).subscribe({
+      next: (data) => {
+        this.employee = data;
+        this.buildForm();
+      },
+      error: (err) => {
+        console.error('Error fetching employee:', err);
+      }
+    });
+  }
 
   buildForm() {
     this.employeeForm = this._formBuilder.group({
       identity: [this.employee.identity, identityValidator],
-
       firstName: [this.employee.firstName, nameValidator],
       lastName: [this.employee.lastName, nameValidator],
-      startOfWorkDate: [this.employee.startOfWorkDate, dateValidator],
+      startOfWorkDate: [this.employee.startOfWorkDate, Validators.required],
       birthDate: [this.employee.birthDate, dateValidator],
       gender: [this.employee.gender, Validators.required],
-      // positions: [this.employee.positions, Validators.required],
     });
-    console.log(this.employee);
-  }
-  positions: Position[] = [];
-  tryPositionEmployee = new PositionEmployeePostModel(0, new Date(), false);
-  form!: FormGroup;
-  selectedPosition: Position | null = null;
-  isLeanar: boolean = false;
-  px: Position[] = [];
-  pn: Position[] = [];
-  xx: Position[] = [];
-  y: any[] = [];
-  newEmployee!: Employee
-  positionEmployee: PositionEmployeePostModel[] = [];
-  positionEmployeeForms: any;
-
-  updateEntryDateIntoOffice(index: number, selectedDate: Date) {
-    const positionEmployeeForm = this.positionEmployeeForms.at(index) as FormGroup;
-    positionEmployeeForm.patchValue({ entryDateIntoOffice: selectedDate });
-    console.log("allform", positionEmployeeForm)
-  }
-  // positionEmployeeForms: FormArray;
-
-  initPositionEmployeeForms(): void {
-    this.positionEmployeeForms = this._formBuilder.array([]);
   }
 
   addPositionEmployeeForm(pee: PositionEmployeePostModel) {
-    console.log("pee", pee)
     const positionEmployee = this._formBuilder.group({
       positionId: [pee.positionId, Validators.required],
       entryDateIntoOffice: [pee.entryDateIntoOffice, Validators.required],
       isManagerial: [pee.ismanagerial]
     });
-
-    console.log("nowwwwwwwwwwwwwwww4444444444", positionEmployee)
     this.peForms.push(positionEmployee);
-    console.log("peeforms", this.peForms)
   }
-  onDateChange(selectedDate: any, index: number) {
-    this.positionEmployee[index].entryDateIntoOffice = selectedDate;
-    this.form.markAsDirty();
+  onSubmit() {
+    console.log("the form beforoe", this.employeeForm?.value)
+
+
+    const employee: Employee = {
+      ...this.employeeForm?.value,
+    }
+
+    this._employeeService.updateEmployee(this.employeeId, employee).subscribe({
+
+      next: (data: any) => {
+        console.log(data);
+
+        this._snackBar.open('Employee updated successfully!', 'Close', {
+          duration: 5000,
+
+
+          panelClass: ['success-snackbar'],
+        });
+
+      },
+
+
+
+
+      error: (e: Error) => {
+        console.error(e);
+        console.error('Failed to add employee');
+        console.error('Failed to add employee');
+
+        this._snackBar.open('Failed to update employee. Please try again later.', 'Close', {
+
+
+          duration: 5000,
+
+
+          panelClass: ['error-snackbar'],
+        });
+      },
+    },
+
+    )
   }
-  updateIsManagerialState(index: number, isChecked: boolean) {
-    this.positionEmployeeForms.controls[index].get('ismanagerial').setValue(isChecked);
-  }
-  saveBeforeChoosingPositions()
-  {
-    if(this.employeeForm.invalid){
+  // this.go()
+
+
+
+
+  saveBeforeChoosingPositions() {
+    console.log("gooo", this.peForms)
+    if (this.employeeForm.invalid) {
       return;
     }
-    const newEmployee={
-      ...this.form?.value
-    }
-    this._employeeService.updateEmployee(this.employeeId,newEmployee).subscribe({
-
-      next: (data: any) => { console.log(data); this.newEmployee = data 
-this._router.navigate(["/login"])
-
-
+    const newEmployee = { ...this.employeeForm.value };
+    this._employeeService.updateEmployee(this.employeeId, newEmployee).subscribe({
+      next: (data: any) => {
+        console.log(data);
+        this._router.navigate(["/login"]);
       },
       error: (e: Error) => {
         console.error(e);
@@ -165,103 +173,5 @@ this._router.navigate(["/login"])
         id: [position.id]
       }),
     });
-    console.log("positiion form group", positionFormGroup)
-    console.log("all ppostint int  ", this.allPositions)
   }
-  onSubmit() {
-
-
-
-    this.px = this.positions;
-    const employee: Employee = {
-      ...this.form?.value,
-    }
-    console.log("employee", employee)
-    this._employeeService.updateEmployee(this.employeeId, employee).subscribe({
-
-      next: (data: any) => { console.log(data); this.newEmployee = data },
-      error: (e: Error) => {
-        console.error(e);
-        console.error('Failed to add employee');
-      },
-    });
-    // this.go()
-
-
-
-    this.newEmployee = this.employeeForm?.value as Employee
-
-    console.log("new employee", this.newEmployee)
-    //   //   positions: this.px.map((position: Position) => ({
-    //   //     positionName: {
-    //   //       name: position.name,
-    //   //       description: position.description,
-    //   //     },
-    //   //     isAdminstrative: true,
-    //   //     dateOfEntryIntoOffice: new Date()
-    //   //   })),
-    //   // };
-
-    //   // if (!employee.positions) {
-    //   //   console.error('Positions are missing');
-    //   //   return;
-    //   // }}
-    // }
-    this.newEmployee = this.employeeForm?.value as Employee
-
-    console.log("new employee", this.newEmployee)
-    console.log("employee id", this.employeeId)
-    this._employeeService.updateEmployee(this.employeeId, this.newEmployee).subscribe({
-
-      next: (data: any) => {
-        console.log(data);
-        console.log("before")
-        // this.addPositionEmployee()
-        console.log("after")
-
-      },
-      error: (e: Error) => {
-        console.error(e);
-        console.error('Failed to add employee');
-      },
-    });
-
-    // positionEmployees.forEach((positionEmployee: PositionEmployeePostModel) => {
-    //   this._employeeService.addPositionToEmployee(this.newEmployee.id, positionEmployee).subscribe({
-    //     next: (data: any) => {
-    //       console.log("to server its get;", data);
-    //       console.log(data);
-    //     },
-    //     error: (e: Error) => {
-    //       console.error(e);
-    //       console.error('Failed to add position employee');
-    //     },
-    //   });
-    // }
-    // go(){
-    //   console.log("goooo")
-    //   this.tryPositionEmployee as PositionEmployeePostModel
-    //   this._employeeService.addPositionToEmployee(this.newEmployee.id, this.tryPositionEmployee).subscribe({
-    //     next: (data: any) =>{ 
-    //       console.log("sdfghjkl;", data); 
-    //       console.log(data);
-    //     },
-    //     error: (e: Error) => {
-    //       console.error(e);
-    //       console.error('Failed to add position employee');
-    //     },
-    //   });
-
-
-
-
-
-
-
-    // }
-
-  }
-
-
-
 }

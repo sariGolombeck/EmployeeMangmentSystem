@@ -1,4 +1,4 @@
-
+<!-- 
    <form [formGroup]="positionForm" (ngSubmit)="onSubmit()">
     <mat-form-field appearance="fill">
       <mat-label>Name</mat-label>
@@ -16,5 +16,42 @@
       </mat-error>
     </mat-form-field>
     <button mat-raised-button color="primary" type="submit" (click)="onSubmit()">Submit</button>
+  </form>
+   -->
+   <!-- <form [formGroup]="positionForm" (ngSubmit)="onSubmit()" class="custom-form">
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" required>
+      <mat-error *ngIf="positionForm.get('name')?.invalid && (positionForm.get('name')?.dirty || positionForm.get('name')?.touched)">
+        Please enter a name.
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label>Description</mat-label>
+      <textarea matInput formControlName="description" required></textarea>
+      <mat-error *ngIf="positionForm.get('description')?.invalid && (positionForm.get('description')?.dirty || positionForm.get('description')?.touched)">
+        Please enter a description.
+      </mat-error>
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit" class="submit-button">Submit</button>
+  </form>
+   -->
+   <form [formGroup]="positionForm" (ngSubmit)="onSubmit()" class="modern-form">
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" required>
+      <mat-error *ngIf="positionForm.get('name')?.invalid && (positionForm.get('name')?.dirty || positionForm.get('name')?.touched)">
+        Please enter a name.
+      </mat-error>
+    </mat-form-field>
+  
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label>Description</mat-label>
+      <textarea matInput formControlName="description" required></textarea>
+      <mat-error *ngIf="positionForm.get('description')?.invalid && (positionForm.get('description')?.dirty || positionForm.get('description')?.touched)">
+        Please enter a description.
+      </mat-error>
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit" class="submit-button">Submit</button>
   </form>
   

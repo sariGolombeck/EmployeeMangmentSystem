@@ -2,8 +2,8 @@
   <button mat-raised-button color="primary" (click)="openAddPositionDialog()">הוספת תפקיד לעובד</button>
   <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
     <ng-container matColumnDef="positionId">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> מזהה תפקיד </th>
-      <td mat-cell *matCellDef="let element"> {{element.positionId}} </td>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>  position name</th>
+      <td mat-cell *matCellDef="let element"> {{positions[element.positionId].name}} </td>
     </ng-container>
     <ng-container matColumnDef="entryDateIntoOffice">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> תאריך כניסה לתפקיד </th>
@@ -14,14 +14,14 @@
       <td mat-cell *matCellDef="let element"> {{element.ismanagerial ? 'mangererial' : 'not managerial'}} </td>
     </ng-container>
     <ng-container matColumnDef="actions">
-      <th mat-header-cell *matHeaderCellDef> פעולות </th>
+      <th mat-header-cell *matHeaderCellDef> actions </th>
       <td mat-cell *matCellDef="let element">
         <button mat-icon-button color="primary" (click)="editPosition(element)">
           <mat-icon>edit</mat-icon>
         </button>
         <button mat-icon-button color="warn" (click)="deletePosition(element)">
           <mat-icon>delete</mat-icon>
-        </button>
+        </button>  
       </td>
     </ng-container>
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

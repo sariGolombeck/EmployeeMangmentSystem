@@ -106,21 +106,41 @@
       </form>
     </mat-step>
 
+
     <mat-step [stepControl]="form.controls['startOfWorkDate']">
+      <ng-template matStepLabel>beginging work date</ng-template>
+      <form [formGroup]="form">
+        <mat-form-field>
+          <mat-label>Beginig work date</mat-label>
+          <input matInput [matDatepicker]="picker2" formControlName="startOfWorkDate" placeholder="Enter your date of birth" formControlName="startOfWorkDate">
+          <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+          <mat-datepicker #picker2></mat-datepicker>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext [disabled]="form.get('startOfWorkDate')?.invalid">Next</button>
+        </div>
+      </form>
+    </mat-step>
+
+
+
+
+    <!-- <mat-step [stepControl]="form.controls['startOfWorkDate']">
       <ng-template matStepLabel>Beginig work date</ng-template>
       <mat-form-field>
-        <input matInput [matDatepicker]="picker1" formControlName="startOfWorkDate" placeholder="Enter begining date">
+        <input matInput [matDatepicker]="picker1"  placeholder="Enter begining date" formControlName="startOfWorkDate">
         <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-        <mat-datepicker #picker1></mat-datepicker>
+        <mat-datepicker #picker1 ></mat-datepicker>
         <mat-error *ngIf="form.get('startOfWorkDate')?.hasError('required')">Begining date is required</mat-error>
       </mat-form-field>
       <div>
         <button mat-button matStepperPrevious>Back</button>
         <button mat-button matStepperNext [disabled]="form.get('startOfWorkDate')?.invalid">Next</button>
       </div>
-    </mat-step>
+    </mat-step> -->
 
-    <mat-step>
+    <!-- <mat-step>
       <ng-template matStepLabel>Select Positions</ng-template>
       <form [formGroup]="form">
         <mat-form-field>
@@ -135,9 +155,7 @@
         </div>
       </form>
     </mat-step>
-
     <mat-horizontal-stepper>
-
       <mat-step *ngFor="let position of positions; let i = index">
         {{position.name}}
         <form [formGroup]="positionEmployeeForms.controls[i]">
@@ -152,16 +170,79 @@
           <mat-checkbox [formControl]="positionEmployeeForms.controls[i].get('ismanagerial')" (change)="updateIsManagerialState(i, $event.checked)">
             Is Managerial
           </mat-checkbox>
-
-     
         </form>     
         </mat-step>
-
-
     </mat-horizontal-stepper>
    <mat-step>
-    <ng-template matStepLabel>Submit</ng-template>
-            <button mat-button (click)="onSubmit()"></button>
+    <ng-template matStepLabel>Save employee</ng-template>
+    <div>
+            <button mat-button (click)="onSubmit()">Save</button></div>
           </mat-step>
   </mat-vertical-stepper>
-</div>
+</div> -->
+
+
+<!-- <mat-horizontal-stepper>
+
+  <mat-step *ngFor="let position of positions; let i = index">
+    <form [formGroup]="positionEmployeeForms.controls[i]"> 
+      {{position.name}}
+      <mat-form-field>
+       
+        <input matInput [matDatepicker]="picker" placeholder="Choose entry date" 
+               (dateChange)="updateEntryDateIntoOffice(i, $event.value)">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="positionEmployeeForms.controls[i].get('entryDateIntoOffice')?.hasError('required')">Entry date is required</mat-error>
+        <mat-error *ngIf="positionEmployeeForms.controls[i].get('entryDateIntoOffice')?.hasError('invalidEntryDate')">Entry date must be after start of work date</mat-error>
+      
+      </mat-form-field>
+
+      <mat-checkbox [formControl]="positionEmployeeForms.controls[i].get('ismanagerial')" (change)="updateIsManagerialState(i, $event.checked)">
+        Is Managerial
+      </mat-checkbox>
+  
+      
+    </form>
+  </mat-step> -->
+
+<mat-step>
+  <ng-template matStepLabel>Select Positions</ng-template>
+  <form [formGroup]="form">
+    <mat-form-field>
+      <mat-label>Select Positions</mat-label>
+      <mat-select placeholder="Select positions" formControlName="positions" multiple required>
+        <mat-option *ngFor="let position of allPositions" (onSelectionChange)="addPosition(position)" [value]="position">{{ position.name }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button matStepperNext>Next</button>
+      <button mat-button (click)="onSubmit()">Submit</button>
+    </div>
+  </form>
+
+
+<mat-horizontal-stepper>
+
+<mat-step *ngFor="let position of positions; let i = index">
+  <form [formGroup]="positionEmployeeForms.controls[i]"> 
+    {{position.name}}
+    <mat-form-field>
+     
+      <input matInput [matDatepicker]="picker" placeholder="Choose entry date" 
+             (dateChange)="updateEntryDateIntoOffice(i, $event.value)">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="positionEmployeeForms.controls[i].get('entryDateIntoOffice')?.hasError('required')">Entry date is required</mat-error>
+      <mat-error *ngIf="positionEmployeeForms.controls[i].get('entryDateIntoOffice')?.hasError('invalidEntryDate')">Entry date must be after start of work date</mat-error>
+    
+    </mat-form-field>
+
+    <mat-checkbox [formControl]="positionEmployeeForms.controls[i].get('ismanagerial')" (change)="updateIsManagerialState(i, $event.checked)">
+      Is Managerial
+    </mat-checkbox>
+
+    
+  </form>
+</mat-step>

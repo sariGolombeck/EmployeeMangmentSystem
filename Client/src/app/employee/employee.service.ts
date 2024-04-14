@@ -11,9 +11,9 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Employee } from './models/employee';
-import { PositionEmployeeDto } from '../position-employee-dto';
+import { PositionEmployeeDto } from './models/position-employee-dto';
 import { Observable, catchError, of, throwError } from 'rxjs';
-import { PositionEmployeePostModel } from '../position-employee-post-model';
+import { PositionEmployeePostModel } from './models/position-employee-post-model';
 @Injectable({
   providedIn: 'root'
 })
@@ -32,14 +32,14 @@ export class EmployeeService {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${sessionStorage.getItem('token')}`
     });
-    return this.http.post<Employee>(this.basicUrl, employee,{headers: headers});
+    return this.http.post<Employee>(this.basicUrl, employee, { headers: headers });
   }
   addPositionToEmployee(id: number, position: any): Observable<any> {
-   const headers = new HttpHeaders({
+    const headers = new HttpHeaders({
       'Authorization': `Bearer ${sessionStorage.getItem('token')}`
     });
     console.log("id of service", id, "position", position)
-    return this.http.post<any>(`${this.basicUrl}/${id}/positions`, position,{headers: headers});
+    return this.http.post<any>(`${this.basicUrl}/${id}/positions`, position, { headers: headers });
   }
   getEmployeePositions(id: number): Observable<any[]> {
     return this.http.get<any[]>(`${this.basicUrl}/${id}/positions`)
@@ -56,18 +56,20 @@ export class EmployeeService {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${sessionStorage.getItem('token')}`
     });
-    return this.http.delete(`${this.basicUrl}/${employeeId}/positions/${positionId}`,{headers: headers})
+    return this.http.delete(`${this.basicUrl}/${employeeId}/positions/${positionId}`, { headers: headers })
   }
   deleteEmployee(id: number): Observable<any> {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${sessionStorage.getItem('token')}`
     });
-    return this.http.delete(`${this.basicUrl}/${id}`, {headers: headers})
+    return this.http.delete(`${this.basicUrl}/${id}`, { headers: headers })
   }
   updateEmployee(id: number, employee: any): Observable<any> {
     console.log("id of service", id)
-
-    return this.http.put(`${this.basicUrl}/${id}`, employee)
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${sessionStorage.getItem('token')}`
+    });
+    return this.http.put(`${this.basicUrl}/${id}`, employee, { headers: headers })
   }
 }
 // addPositionToEmployee(employeeId: number, position: PositionEmployeePostModel): Observable<any> {

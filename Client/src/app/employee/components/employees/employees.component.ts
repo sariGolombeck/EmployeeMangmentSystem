@@ -60,6 +60,9 @@ export class EmployeesComponent implements OnInit {
   editEmployee(employee: Employee) {
     if(sessionStorage.getItem("token")=="")
     this._router.navigate(['login', employee.id]);
+  
+      this._router.navigate(['employees/update', employee.id]);
+    
   }
 
   deleteEmployee(employee: Employee) {

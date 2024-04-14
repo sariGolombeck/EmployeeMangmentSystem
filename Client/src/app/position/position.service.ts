@@ -13,7 +13,6 @@ export class PositionService {
   // const x=this.http.get<Position[]>(this.basicUrl)
   //   return this.http.get<Position[]>(this.basicUrl)
   getPositions(): Observable<Position[]> {
-    console.log("the service")
     return  this.http.get<Position[]>(this.basicUrl)
 
   }

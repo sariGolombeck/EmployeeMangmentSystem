@@ -393,32 +393,47 @@
 //     this.dialogRef.close(this.positionEmployeeDtos);
 //   }
 // }
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl, AbstractControl } from '@angular/forms';
 import { Position } from '../../../position/models/position';
-import { PositionEmployeeDto } from '../../../position-employee-dto';
+import { PositionEmployeeDto } from '../../models/position-employee-dto';
+import { Employee } from '../../models/employee';
+import { EmployeeService } from '../../employee.service';
+import { validateEntryDate } from '../../../validtaionTest/validation';
 @Component({
   selector: 'app-position-selection',
   templateUrl: './position-selection.component.html',
   styleUrls: ['./position-selection.component.scss']
 })
-export class PositionSelectionComponent {
+export class PositionSelectionComponent implements OnInit {
   positionForms: FormGroup[] = [];
   positionEmployeeDtos: PositionEmployeeDto[] = [];
   index: any;
-
+  employee!: Employee
   constructor(
     private formBuilder: FormBuilder,
+    private _employeeService: EmployeeService,
     public dialogRef: MatDialogRef<PositionSelectionComponent>,
     @Inject(MAT_DIALOG_DATA) public data: { employeeId: number, positions: Position[] }
   ) { }
+  ngOnInit(): void {
+    this._employeeService.getEmployeeById(this.data.employeeId).subscribe({
+      next: (data) => {
+        this.employee = data
+        console.log("data of employee", data)
+      },
+      error: (e) => {
+        console.error(e)
+      }
+    })
+  }
 
   createPositionForm(positionId: number): FormGroup {
     return this.formBuilder.group({
       employeeId: [this.data.employeeId],
       positionId: [positionId],
-      entryDateIntoOffice: ['', Validators.required],
+      entryDateIntoOffice: [Date, [Validators.required, (control: AbstractControl) => validateEntryDate(control, this.employee.startOfWorkDate)]],
       ismanagerial: [false] // Assuming it starts as false
     });
   }
@@ -448,9 +463,13 @@ export class PositionSelectionComponent {
     });
   }
 
-  onConfirm(): void {
-    this.positionEmployeeDtos = this.positionForms.map(form => form.value);
-    console.log("the contentd", this.positionEmployeeDtos)
-    this.dialogRef.close(this.positionEmployeeDtos);
+  onConfirm() {
+    if (this.positionForms.every(form => form.valid)) {
+      this.positionEmployeeDtos = this.positionForms.map(form => form.value);
+      console.log("the contentd", this.positionEmployeeDtos)
+      this.dialogRef.close(this.positionEmployeeDtos);
+
+    }
+    return;
   }
 }

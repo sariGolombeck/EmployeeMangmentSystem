@@ -8,11 +8,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { EmployeeService } from '../../employee.service';
 import { Employee } from '../../models/employee';
-import { PositionEmployeePostModel } from '../../../position-employee-post-model';
+import { PositionEmployeePostModel } from '../../models/position-employee-post-model';
 import { PositionService } from '../../../position/position.service';
 import { Position } from '../../../position/models/position';
 import { EditEmployeePositionComponent } from '../edit-employee-position/edit-employee-position.component';
-import { PositionEmployeeDto } from '../../../position-employee-dto';
+import { PositionEmployeeDto } from '../../models/position-employee-dto';
 import { CanActivate, ActivatedRouteSnapshot, ActivatedRoute, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
 import { PositionSelectionComponent } from '../position-selection/position-selection.component';
 @Component({
@@ -38,7 +38,7 @@ export class PositionEmployeeTableComponent implements OnInit {
     private _snackBar: MatSnackBar,
     private route: ActivatedRoute,
     private positionService: PositionService,
-    private _router:Router
+    private _router: Router
   ) {
     this.dataSource = new MatTableDataSource<PositionEmployeeDto>([]);
   }
@@ -48,12 +48,17 @@ export class PositionEmployeeTableComponent implements OnInit {
       this.employeeId = +params['id'];
     });
 
-    this.positionService.getPositions().subscribe(positions => {
-      this.positions = positions;
-      this.loadEmployeePositions();
+    this.getPositions();
+    this.loadEmployeePositions();
+  }
+  getPositions() {
+    this.positionService.getPositions().subscribe({
+      next: (data) => {
+        this.positions = data
+      },
+      error: (e) => console.error(e),
     });
   }
-
   loadEmployeePositions() {
     this._employeeService.getEmployeePositions(this.employeeId).subscribe({
       next: (data) => {
@@ -115,10 +120,11 @@ export class PositionEmployeeTableComponent implements OnInit {
     });
   }
 
-  editPosition(row: PositionEmployeeDto) {
+  editPosition(row: any) {
+    console.log("why dosent it open?")
     const dialogRef = this.dialog.open(EditEmployeePositionComponent, {
       width: '250px',
-      data: row
+      data: row,
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -134,8 +140,8 @@ export class PositionEmployeeTableComponent implements OnInit {
     this.updatePosition(result);//אחר כך להעביר את זה בSUBMIT לSERVICE של הPUTץ
   }
   deletePosition(row: PositionEmployeeDto) {
-    if(sessionStorage.getItem("token")=="")
-    this._router.navigate(['/login'])
+    if (sessionStorage.getItem("token") == "")
+      this._router.navigate(['/login'])
     const confirmDelete = confirm('Are you sure you want to delete this position?');
     if (confirmDelete) {
       this._employeeService.deletePositionEmployee(row.employeeId, row.positionId).subscribe({

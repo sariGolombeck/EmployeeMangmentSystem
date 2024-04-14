@@ -10,23 +10,20 @@ import { Routes, RouterModule } from '@angular/router';
 import { EmployeeModule } from './employee/employee.module';
 import { HomeComponent } from './home/home.component';
 import { NgModule } from '@angular/core';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './register/login/login.component';
 import { PositionModule } from './position/position.module';
+import { LogoutComponent } from './register/login/logout/logout.component';
 // ];
 export const routes: Routes = [
-  // { path: '', loadComponent: () => import('./employee/components/employees/employees.component').then(c => c.EmployeesComponent) },
-  // { path: 'yes',component:EmployeeModule },
-  { path: '', redirectTo: 'employees', pathMatch: 'full' },  //  loadChildren: () => import('./employee/employee.module').then(c => c.EmployeeModule   )} ,
-  //  {path: '',component:HomeComponent },
-  //  { path: 'home', loadComponent:()=>import('./home/home.component').then(c=>c.HomeComponent)}, 
+  { path: '', redirectTo: 'employees', pathMatch: 'full' },  
   { path: 'employees', loadChildren: () => import('./employee/employee.module').then(c => c.EmployeeModule) },
   { path: 'employees', loadComponent: () => import('./employee/components/employees/employees.component').then(c => c.EmployeesComponent) },
-  // { path: 'add-employee', loadComponent: () => import('./employee/components/add-employee/add-employee.component').then(c => c.AddEmployeeComponent) },
-{path:'login',component:LoginComponent},
-{ path: 'positions', loadChildren: () => import('./position/position.module').then(c => c.PositionModule) },
+  { path: 'login', component: LoginComponent },
+  { path: 'positions', loadChildren: () => import('./position/position.module').then(c => c.PositionModule) },
+  { path: 'logout', component: LogoutComponent },
+  { path: '**', redirectTo: 'employees', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent },
 
-  // { path: 'login', loadComponent: () => import('./employee/components/login/login.component').then(c => c.LoginComponent) },
-  // נתיבים נוספים...
 ];
 
 @NgModule({

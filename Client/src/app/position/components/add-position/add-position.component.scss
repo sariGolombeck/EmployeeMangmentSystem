@@ -1,0 +1,16 @@
+.modern-form {
+    width: 100%; /* רוחב הטופס */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .form-field {
+    width: 80%; /* רוחב השדות בטופס */
+    margin-bottom: 20px; /* מרווח בין שדות הטופס */
+  }
+  
+  .submit-button {
+    width: 80%; /* רוחב כפתור השליחה */
+  }
+  

@@ -17,12 +17,13 @@ import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header/header.component';
 import { RouterModule, Routes } from '@angular/router';
+import { FooterComponent } from "./footer/footer.component";
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
-  imports: [RouterOutlet, CommonModule, HeaderComponent, RouterModule] // Import RouterModule
+    selector: 'app-root',
+    standalone: true,
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.scss',
+    imports: [RouterOutlet, CommonModule, HeaderComponent, RouterModule, FooterComponent] // Import RouterModule
 })
 export class AppComponent implements OnInit{
   ngOnInit(): void {

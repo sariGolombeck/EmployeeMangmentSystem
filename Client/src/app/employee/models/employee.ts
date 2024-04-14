@@ -7,26 +7,12 @@ export enum Gender {
 
 export class Employee {
   id!: number;
-  identity: string;
-  firstName: string;
-  lastName: string;
-  startOfWorkDate: Date;
+  identity!: string;
+  firstName!: string;
+  lastName!: string;
+  startOfWorkDate!: Date;
   birthDate: Date | undefined;
-  gender: Gender.Male;
+  gender!: Gender.Male;
   // address: string | undefined;
-  constructor(
-    identity: string,
-    firstName: string,
-    lastName: string,
-    startOfWorkDate: Date,
-    birthdate: Date,
-    gender: Gender.Male,
-    // address: string | undefined
-  ) {
-    this.identity = identity;
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.startOfWorkDate = startOfWorkDate;
-    this.gender = gender;
-  }
+  
 }

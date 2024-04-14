@@ -1,99 +1,4 @@
-<!-- <h2 mat-dialog-title>בחירת תפקיד</h2>
-<div mat-dialog-content>
-  <p>בחר תפקיד:</p>
-  <mat-form-field>
-    <mat-label>תפקיד</mat-label>
-    <mat-select [(value)]="selectedPosition">
-      <mat-option *ngFor="let position of data.positions" [value]="position">{{ position.name }}</mat-option>
-    </mat-select>
-  </mat-form-field>
-</div>
-<div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">ביטול</button>
-  <button mat-button color="primary" [disabled]="!selectedPosition" (click)="onConfirm()">אישור</button>
-</div> -->
-<!-- <h2 mat-dialog-title>בחירת תפקיד</h2>
-<div mat-dialog-content>
-  <p>בחר תפקיד:</p>
-  <mat-form-field>
-    <mat-label>תפקיד</mat-label>
-    <mat-select (selectionChange)="onPositionSelect($event.value)">
-      <mat-option *ngFor="let position of data.positions" [value]="position">{{ position.name }}</mat-option>
-    </mat-select>
-  </mat-form-field>
-  <div *ngFor="let form of positionForms" class="position-form">
-    <mat-form-field>
-      <input matInput formControlName="entryDateIntoOffice" placeholder="תאריך כניסה לתפקיד" required>
-    </mat-form-field>
-  </div>
-</div>
-<div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">ביטול</button>
-  <button mat-button color="primary" [disabled]="!positionForms.length" (click)="onConfirm()">אישור</button>
-</div> -->
 
-<!-- 
-<h2 mat-dialog-title>בחירת תפקיד</h2>
-<div mat-dialog-content>
-  <p>בחר תפקיד:</p>
-  <mat-form-field>
-    <mat-label>תפקיד</mat-label>
-    <mat-select (selectionChange)="onPositionSelect($event.value)">
-      <mat-option *ngFor="let position of data.positions" [value]="position">{{ position.name }}</mat-option>
-    </mat-select>
-  </mat-form-field>
-  <div *ngFor="let form of positionForms; let i = index" class="position-form">
-    <mat-form-field>
-      <input matInput formControlName="entryDateIntoOffice" placeholder="תאריך כניסה לתפקיד" required>
-    </mat-form-field>
-    <mat-checkbox formControlName="ismanagerial">האם מנהל</mat-checkbox>
-  </div>
-</div>
-<div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">ביטול</button>
-  <button mat-button color="primary" [disabled]="!positionForms.length" (click)="onConfirm()">אישור</button>
-</div>
-
-
-
-<form [formGroup]="positionForms.controls[i]">
-  <mat-form-field>
-    <input matInput [matDatepicker]="picker" placeholder="Choose entry date" 
-           (dateChange)="updateEntryDateIntoOffice(i, $event.value)">
-    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
-  </mat-form-field>
-
-  <mat-checkbox [formControl]="positionEmployeeForms.controls[i].get('isManagerial')" (change)="updateIsManagerialState(i, $event.checked)">
-    > 
-    Is Managerial
-  </mat-checkbox>
-
-  
-</form>
- -->
- <!-- <h2 mat-dialog-title>בחירת תפקיד</h2>
-<div mat-dialog-content>
-  <p>בחר תפקידים:</p>
-  <mat-form-field>
-    <mat-label>תפקידים</mat-label>
-    <mat-select multiple (selectionChange)="onPositionSelect($event.value)">
-      <mat-option *ngFor="let position of data.positions" [value]="position">{{ position.name }}</mat-option>
-    </mat-select>
-  </mat-form-field>
-  <div *ngFor="let form of positionForms; let i = index" class="position-form" [formGroup]="form">
-    <mat-form-field>
-      <input matInput formControlName="entryDateIntoOffice" placeholder="תאריך כניסה לתפקיד" [matDatepicker]="picker" required>
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
-    <mat-checkbox formControlName="ismanagerial">האם מנהל</mat-checkbox>
-  </div>
-</div>
-<div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">ביטול</button>
-  <button mat-button color="primary" [disabled]="!positionForms.length" (click)="onConfirm()">אישור</button>
-</div> -->
 <h2 mat-dialog-title>Selecting a Position</h2>
 <div mat-dialog-content>
  <p>Select positions:</p>
@@ -104,11 +9,14 @@
    </mat-select>
  </mat-form-field>
  <div *ngFor="let form of positionForms; let i = index" class="position-form" [formGroup]="form">
-   <h3>Position ID: {{ form.get('positionId')?.value }}</h3>
+   <h3>Position: {{data.positions[i].name}}</h3>
    <mat-form-field>
      <input matInput formControlName="entryDateIntoOffice" placeholder="Entry date into the position" [matDatepicker]="picker" required>
      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
      <mat-datepicker #picker></mat-datepicker>
+     <div *ngIf="form.get('entryDateIntoOffice')?.hasError('matDatepickerPast')">
+      <mat-error>תאריך הכניסה לתפקיד חייב להיות לאחר תאריך תחילת העבודה.</mat-error>
+    </div>
    </mat-form-field>
    <mat-checkbox formControlName="ismanagerial">Is Managerial</mat-checkbox>
  </div>
@@ -117,23 +25,3 @@
   <button mat-button (click)="onNoClick()">Cancel</button>
   <button mat-button color="primary" [disabled]="!positionForms.length" (click)="onConfirm()">Confirm</button>
 </div>
-<!-- <div mat-dialog-content>
-  <p>בחר תפקידים:</p>
-  <mat-form-field>
-    <mat-label>תפקידים</mat-label>
-    <mat-select multiple (selectionChange)="onPositionSelect($event.value)">
-      <mat-option *ngFor="let position of data.positions" [value]="position">{{ position.name }}</mat-option>
-    </mat-select>
-  </mat-form-field>
-  <div *ngFor="let form of positionForms; let i = index" class="position-form" [formGroup]="form">
-  
-    <h3>תפקיד ID: {{ form.get('positionId')?.value }}</h3>
-    <mat-form-field>
-      <input matInput formControlName="entryDateIntoOffice" placeholder="תאריך כניסה לתפקיד" [matDatepicker]="picker" required>
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
-    <mat-checkbox formControlName="ismanagerial">האם מנהל</mat-checkbox>
-  </div>
-  
-</div> -->

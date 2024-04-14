@@ -34,12 +34,14 @@ import { HttpClientModule } from '@angular/common/http';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
+logout() {
+throw new Error('Method not implemented.');
+}
 addPosition() {
 this.router.navigate(['positions/add-position']);
 }
   constructor(private router: Router,private _employeeService: EmployeeService) {}
 
-  // הוסף הגדרת פעולה עבור לחצן "רשימת עובדים"
   onDownloadClick() {
     this._employeeService.getAllEmployees().subscribe({
       next: (data) => {
@@ -63,13 +65,9 @@ this.router.navigate(['positions/add-position']);
   onAllEmployees(){
     this.router.navigate(['employees']);
   }
-  // onEmployeesListClick() {
-  //   // ניווט לנתיב "employees"
-  //   this.router.navigate(['employees']);
-
-  //   // או ביצוע פעולה אחרת בהתאם לצורך
-  // }
-
+  onLogOut(){
+    this.router.navigate(['/logout']);
+  }
   onAddEmployeeClick() {
     // ניווט לנתיב "employees"
     this.router.navigate(['/add-employee']);

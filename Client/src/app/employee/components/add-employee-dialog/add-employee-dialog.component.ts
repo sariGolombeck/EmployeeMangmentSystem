@@ -1,10 +1,11 @@
 // add-employee-dialog.component.ts
 
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Position } from '../../../position/models/position';
 import { AddEmployeeComponent } from '../add-employee/add-employee.component';
+import { Router } from '@angular/router';
 @Component({
   selector: 'add-employee-dialog',
   templateUrl: 'add-employee-dialog.component.html',
@@ -13,11 +14,12 @@ import { AddEmployeeComponent } from '../add-employee/add-employee.component';
     { provide: MatDialogRef, useValue: {} }
   ]
 })
-export class AddEmployeePositionComponent {
+export class AddEmployeePositionComponent implements OnInit {
   form: FormGroup;
   allPositions: Position[] = [];
 
   constructor(
+    private _router: Router,
     private fb: FormBuilder,
     public dialogRef: MatDialogRef<AddEmployeeComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
@@ -26,7 +28,9 @@ export class AddEmployeePositionComponent {
       // Define your form controls here
     });
   }
-
+  ngOnInit(): void {
+    if (sessionStorage.getItem("token") == "") { this._router.navigate(['/login']) }
+  }
   onSubmit() {
     if (this.form.valid) {
       // Process form submission
