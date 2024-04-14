@@ -1,0 +1,17 @@
+<div class="user-container">
+  <h2>פרטי משתמש</h2>
+
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <mat-label>שם</mat-label>
+      <input matInput type="text" formControlName="name">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>סיסמה</mat-label>
+      <input matInput type="password" formControlName="password">
+    </mat-form-field>
+
+    <button mat-raised-button type="submit" color="primary">שלח</button>
+  </form>
+</div>
