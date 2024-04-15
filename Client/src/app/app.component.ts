@@ -30,5 +30,5 @@ export class AppComponent implements OnInit{
    sessionStorage.setItem("token","");
   }
 
-  title = 'client';
+  title = 'EmloyeesManagementSystem';
 }

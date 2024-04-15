@@ -1,5 +1,3 @@
-import { Component } from "@angular/core";
-import { Position } from "../../position/models/position";
 export enum Gender {
   Male = 0,
   Female = 1
@@ -12,7 +10,5 @@ export class Employee {
   lastName!: string;
   startOfWorkDate!: Date;
   birthDate: Date | undefined;
-  gender!: Gender.Male;
-  // address: string | undefined;
-  
+  gender!: Gender.Male;  
 }

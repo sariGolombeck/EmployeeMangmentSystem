@@ -1,7 +1,7 @@
 
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { EmployeesComponent } from './components/employees/employees.component';
+import { EmployeesComponent } from './components/get-employees/employees/employees.component';
 import { EmployeeRoutingModule } from './employee-routing.module';
 import { RouterModule } from '@angular/router';
 import { EmployeeService } from './employee.service';
@@ -17,7 +17,6 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ActivatedRoute } from '@angular/router';
 import { provideNativeDateAdapter } from '@angular/material/core';
-import { PositionSelectionComponent } from './components/position-selection/position-selection.component';
 import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import {
   FormBuilder,
@@ -42,6 +41,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core'; // נוסיף גם עבור MatNativeDateModule
 import _MatStepperIntl from '@angular/material/stepper';
 import { MatAccordion } from '@angular/material/expansion';
+import { DateOnlyPipe } from '../date-pipe/date-pipe';
 import {
   MatDialog,
   MatDialogActions,
@@ -51,18 +51,19 @@ import {
   MatDialogRef,
   MatDialogTitle,
 } from '@angular/material/dialog';
-import { UpdateEmployeeComponent } from './components/update-employee/update-employee.component';
+import { UpdateEmployeeComponent } from './components/update/update-employee/update-employee.component';
 import { from } from 'rxjs';
 import { MomentDateAdapter } from '@angular/material-moment-adapter'; // Optional for Moment.js
 import { PositionService } from '../position/position.service';
-import { AddEmployeeComponent } from './components/add-employee/add-employee.component';
 import { MatRadioButton } from '@angular/material/radio';
 import { CdkStepperModule } from '@angular/cdk/stepper';
-import { PositionEmployeeTableComponent } from './components/positions-employee-table/positions-employee-table.component';
-import { EditEmployeePositionComponent } from './components/edit-employee-position/edit-employee-position.component';
+import { PositionEmployeeTableComponent } from './components/update/positions-employee-table/positions-employee-table.component';
 import { DeleteEmployeeConfirmationDialogComponent } from './components/delete-employee-confirmation-dialog/delete-employee-confirmation-dialog.component';
+import { EditEmployeePositionComponent } from './components/update/edit-employee-position/edit-employee-position.component';
+import { PositionSelectionComponent } from './components/update/position-selection/position-selection.component';
+import { AddEmployeeComponent } from './components/add/add-employee/add-employee.component';
 @NgModule({
-  declarations: [DeleteEmployeeConfirmationDialogComponent,PositionSelectionComponent,UpdateEmployeeComponent, EditEmployeePositionComponent, PositionEmployeeTableComponent, EmployeesComponent, AddEmployeeComponent],
+  declarations: [DateOnlyPipe, DeleteEmployeeConfirmationDialogComponent, PositionSelectionComponent, UpdateEmployeeComponent, EditEmployeePositionComponent, PositionEmployeeTableComponent, EmployeesComponent, AddEmployeeComponent],
   imports: [
     MatDialogModule,
     MatFormFieldModule,
@@ -108,13 +109,13 @@ import { DeleteEmployeeConfirmationDialogComponent } from './components/delete-e
   ],
   exports: [
     MatTableModule
-    ,DeleteEmployeeConfirmationDialogComponent,
+    , DeleteEmployeeConfirmationDialogComponent,
     MatStepperModule,
-EmployeesComponent,    EmployeeRoutingModule,
+    EmployeesComponent, EmployeeRoutingModule,
     RouterModule,
     AddEmployeeComponent, MatStepperModule,
     CdkStepperModule, UpdateEmployeeComponent,
-    PositionEmployeeTableComponent, EditEmployeePositionComponent,PositionSelectionComponent
+    PositionEmployeeTableComponent, EditEmployeePositionComponent, PositionSelectionComponent,DateOnlyPipe
   ],
   providers: [PositionSelectionComponent, EmployeeService, MatStepper, MatStepper, provideNativeDateAdapter(), PositionService,], // Provide the native date adapter
 })
