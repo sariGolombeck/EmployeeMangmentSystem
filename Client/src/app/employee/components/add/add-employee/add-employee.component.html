@@ -1,0 +1,173 @@
+<div class="container">
+  <mat-vertical-stepper [linear]="isLinear" #stepper class="stepper">
+
+    <!-- Step 1: Fill out your identity number -->
+    <mat-step [stepControl]="form.controls['identity']">
+      <ng-template matStepLabel>Fill out your identity number</ng-template>
+      <form [formGroup]="form">
+        <mat-form-field>
+          <mat-label>Identity Number</mat-label>
+          <input matInput formControlName="identity" placeholder="Enter your identity number" required>
+          <mat-error *ngIf="form.get('identity')?.hasError('required')">Identity number is required</mat-error>
+          <mat-error *ngIf="form.get('identity')?.hasError('invalidIdentity')">Invalid identity number</mat-error>
+          <mat-error *ngIf="form.get('identity')?.hasError('invalidchars')">Identity can only contain digits</mat-error>
+          <mat-error *ngIf="form.get('identity')?.hasError('invalidextradigits')">Identity can only contain 9 digits</mat-error>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+
+    <!-- Step 2: Fill out your name -->
+    <mat-step [stepControl]="form.controls['firstName']">
+      <ng-template matStepLabel>Fill out your name</ng-template>
+      <form [formGroup]="form">
+        <mat-form-field>
+          <mat-label>First Name</mat-label>
+          <input matInput placeholder="Enter your first name" formControlName="firstName" required>
+          <mat-error *ngIf="form.get('firstName')?.hasError('required')">First name is required</mat-error>
+          <mat-error *ngIf="form.get('firstName')?.hasError('invalidName')">Invalid first name</mat-error>
+          <mat-error *ngIf="form.get('firstName')?.hasError('invalidLettersAmount')">Invalid minimal letters amount</mat-error>
+
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+
+    <!-- Step 3: Last name -->
+    <mat-step [stepControl]="form.controls['lastName']">
+      <ng-template matStepLabel>Last name</ng-template>
+      <form [formGroup]="form">
+        <mat-form-field>
+          <mat-label>Last Name</mat-label>
+          <input matInput formControlName="lastName" placeholder="Enter your last name" required>
+          <mat-error *ngIf="form.get('lastName')?.hasError('required')">Last name is required</mat-error>
+          <mat-error *ngIf="form.get('lastName')?.hasError('invalidName')">Invalid last name</mat-error>
+          <mat-error *ngIf="form.get('lastName')?.hasError('invalidLettersAmount')">Invalid minimal letters amount</mat-error>
+
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step [stepControl]="form.controls['gender']">
+      <ng-template matStepLabel>Gender</ng-template>
+      <form [formGroup]="form">
+        <mat-form-field appearance="fill" class="form-field">
+          <mat-label>מגדר</mat-label>
+          <mat-select formControlName="gender" placeholder="בחר מגדר" class="custom-input">
+            <mat-option [value]="0">זכר</mat-option>
+            <mat-option [value]="1">נקבה</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+
+    <!-- Step 4: Fill out your address -->
+    <mat-step [stepControl]="form.controls['address']">
+      <ng-template matStepLabel>Fill out your address</ng-template>
+      <form [formGroup]="form">
+        <mat-form-field>
+          <mat-label>Address</mat-label>
+          <input matInput formControlName="address" placeholder="Enter your address" required>
+          <mat-error *ngIf="form.get('address')?.hasError('required')">Address is required</mat-error>
+          <mat-error *ngIf="form.get('address')?.hasError('invalid')">Adderss is invalid</mat-error>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step [stepControl]="form.controls['birthDate']">
+      <ng-template matStepLabel>Birthdate</ng-template>
+      <form [formGroup]="form">
+        <mat-form-field>
+          <mat-label>Date of Birth</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="birthDate" placeholder="Enter your date of birth" formControlName="birthDate">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error *ngIf="form.get('birthDate')?.hasError('invalidDate')">Invalid date</mat-error>
+          <mat-error *ngIf="form.get('birthDate')?.hasError('ageUnder18')">Employee must be at least 18 years old</mat-error>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext [disabled]="form.get('birthDate')?.invalid">Next</button>
+        </div>
+      </form>
+    </mat-step>
+
+
+    <mat-step [stepControl]="form.controls['startOfWorkDate']">
+      <ng-template matStepLabel>beginging work date</ng-template>
+      <form [formGroup]="form">
+        <mat-form-field>
+          <mat-label>Beginig work date</mat-label>
+          <input matInput [matDatepicker]="picker2" formControlName="startOfWorkDate" placeholder="Enter your date of birth" formControlName="startOfWorkDate">
+          <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+          <mat-datepicker #picker2></mat-datepicker>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext [disabled]="form.get('startOfWorkDate')?.invalid">Next</button>
+        </div>
+      </form>
+    </mat-step>
+<mat-step>
+  <ng-template matStepLabel>Select Positions</ng-template>
+  <form [formGroup]="form">
+    <mat-form-field>
+      <mat-label>Select Positions</mat-label>
+      <mat-select placeholder="Select positions" formControlName="positions" multiple required>
+        <mat-option *ngFor="let position of allPositions" (onSelectionChange)="addPosition(position)" [value]="position">{{ position.name }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button matStepperNext>Next</button>
+    </div>
+  </form>
+
+
+<mat-horizontal-stepper>
+
+<mat-step *ngFor="let position of positions; let i = index">
+  <form [formGroup]="positionEmployeeForms.controls[i]"> 
+    {{position.name}}
+    <mat-form-field>
+     
+      <input matInput [matDatepicker]="picker" placeholder="Choose entry date" 
+             (dateChange)="updateEntryDateIntoOffice(i, $event.value)">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="positionEmployeeForms.controls[i].get('entryDateIntoOffice')?.hasError('required')">Entry date is required</mat-error>
+      <mat-error *ngIf="positionEmployeeForms.controls[i].get('entryDateIntoOffice')?.hasError('invalidEntryDate')">Entry date must be after start of work date</mat-error>
+    
+    </mat-form-field>
+
+    <mat-checkbox [formControl]="positionEmployeeForms.controls[i].get('ismanagerial')" (change)="updateIsManagerialState(i, $event.checked)">
+      Is Managerial
+    </mat-checkbox>
+
+    
+  </form>
+</mat-step>
+</mat-horizontal-stepper>
+<mat-step>
+  <ng-template matStepLabel>Submit</ng-template>
+  <button mat-button (click)="onSubmit()">Save</button>
+</mat-step>
+

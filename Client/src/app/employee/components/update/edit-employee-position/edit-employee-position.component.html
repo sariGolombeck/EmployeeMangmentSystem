@@ -1,0 +1,18 @@
+<p>edit-employee-position works!</p>
+<h2 mat-dialog-title>Edit Position</h2>
+<mat-dialog-content>
+  <form [formGroup]="positionForm">
+    <mat-form-field>
+      <input matInput formControlName="positionId" placeholder="Position ID" [disabled]="false">
+      {{data.positionName}}
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="entryDateIntoOffice" placeholder="Entry Date Into Office">
+    </mat-form-field>
+    <mat-checkbox formControlName="ismanagerial">Is Managerial</mat-checkbox>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onCancelClick()">Cancel</button>
+  <button mat-button color="primary" (click)="onSaveClick()">Save</button>
+</mat-dialog-actions>
