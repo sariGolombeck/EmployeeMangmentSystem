@@ -1,6 +1,7 @@
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
   import { Component, OnInit, Inject } from '@angular/core';
+import { validateEntryDate } from '../../../../validtaionTest/validation';
 
 @Component({
   selector: 'app-edit-employee-position',
@@ -13,14 +14,14 @@ export class EditEmployeePositionComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<EditEmployeePositionComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { row: any, positionName: string },
+    @Inject(MAT_DIALOG_DATA) public data: { row: any, positionName: string,startOfWorkDate: Date },
     private formBuilder: FormBuilder
   ) { }
 
   ngOnInit(): void {
     this.positionForm = this.formBuilder.group({
       positionId: [this.data.row.positionId, Validators.required],
-      entryDateIntoOffice: [this.data.row.entryDateIntoOffice, Validators.required],
+      entryDateIntoOffice: [this.data.row.entryDateIntoOffice, [Validators.required, (control: AbstractControl) => validateEntryDate(control, this.data.startOfWorkDate)]],
       ismanagerial: [this.data.row.ismanagerial]
     });
   }

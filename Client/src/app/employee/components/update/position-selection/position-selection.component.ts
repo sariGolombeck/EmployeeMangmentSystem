@@ -7,6 +7,7 @@ import { PositionEmployeeDto } from '../../../models/position-employee-dto';
 import { Employee } from '../../../models/employee';
 import { Position } from '../../../../position/models/position';
 import { validateEntryDate } from '../../../../validtaionTest/validation';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-position-selection',
@@ -17,30 +18,22 @@ export class PositionSelectionComponent implements OnInit {
   positionForms: FormGroup[] = [];
   positionEmployeeDtos: PositionEmployeeDto[] = [];
   index: any;
-  employee!: Employee
   constructor(
     private formBuilder: FormBuilder,
     private _employeeService: EmployeeService,
+    private _snackBar: MatSnackBar,
     public dialogRef: MatDialogRef<PositionSelectionComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { employeeId: number, positions: Position[] }
+    @Inject(MAT_DIALOG_DATA) public data: { employeeId: number, positions: Position[],startOfWorkDate: Date }
   ) { }
   ngOnInit(): void {
-    this._employeeService.getEmployeeById(this.data.employeeId).subscribe({
-      next: (data) => {
-        this.employee = data
-        console.log("data of employee", data)
-      },
-      error: (e) => {
-        console.error(e)
-      }
-    })
+    
   }
 
   createPositionForm(positionId: number): FormGroup {
     return this.formBuilder.group({
       employeeId: [this.data.employeeId],
       positionId: [positionId],
-      entryDateIntoOffice: [Date, [Validators.required, (control: AbstractControl) => validateEntryDate(control, this.employee.startOfWorkDate)]],
+      entryDateIntoOffice: [Date, [Validators.required, (control: AbstractControl) => validateEntryDate(control, this.data.startOfWorkDate)]],
       ismanagerial: [false] // Assuming it starts as false
     });
   }
@@ -69,13 +62,16 @@ export class PositionSelectionComponent implements OnInit {
       }
     });
   }
-
   onConfirm() {
     if (this.positionForms.every(form => form.valid)) {
       this.positionEmployeeDtos = this.positionForms.map(form => form.value);
       this.dialogRef.close(this.positionEmployeeDtos);
-
+    } else {
+      this._snackBar.open('Please fill in all required fields correctly', 'Close', {
+        duration: 5000,
+      });
     }
-    return;
+  
+  
   }
 }

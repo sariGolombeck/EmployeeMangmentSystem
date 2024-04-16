@@ -22,7 +22,7 @@ namespace EmployeesManagementServer.Service.Services
             if (await _employeeRepository.GetByIdAsync(employeeId) != null)
             {
                 var okTime = await _employeeRepository.GetByIdAsync(employeeId);
-                if (okTime.startOfWorkDate <= positionEmployee.EntryDateIntoOffice)
+                if (okTime.StartOfWorkDate <= positionEmployee.EntryDateIntoOffice)
                     return await _positionEmployeeRepository.AddPositionToEmployeeAsync(positionEmployee);
             }
             return null;

@@ -1,11 +1,10 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Observable } from 'rxjs';
 import { EmployeeService } from '../../../employee.service';
 import { Employee } from '../../../models/employee';
 import { PositionEmployeePostModel } from '../../../models/position-employee-post-model';
@@ -16,7 +15,7 @@ import { PositionEmployeeDto } from '../../../models/position-employee-dto';
 import { CanActivate, ActivatedRouteSnapshot, ActivatedRoute, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
 import { PositionSelectionComponent } from '../position-selection/position-selection.component';
 @Component({
-  selector: 'positions-employee-table',
+  selector: 'app-positions-employee-table',
   styleUrls: ['positions-employee-table.component.scss'],
   templateUrl: 'positions-employee-table.component.html',
 })
@@ -30,7 +29,9 @@ export class PositionEmployeeTableComponent implements OnInit {
   pk: PositionEmployeeDto[] = [];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-
+  isLeanar: boolean = false;
+  // @Input() startOfWorkDate!: Date;
+employee!: Employee;
   constructor(
     private _employeeService: EmployeeService,
     private _formBuilder: FormBuilder,
@@ -46,9 +47,19 @@ export class PositionEmployeeTableComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.employeeId = +params['id'];
     });
-
+    this.getEmployee();
     this.getPositions();
     this.loadEmployeePositions();
+  }
+  getEmployee() {
+    this._employeeService.getEmployeeById(this.employeeId).subscribe({
+      next: (data) => {
+        this.employee = data
+        console.log("data-table",this.employee)   
+
+      },
+      error: (e) => console.error(e),
+    });
   }
   getPositions() {
     this.positionService.getPositions().subscribe({
@@ -87,7 +98,7 @@ export class PositionEmployeeTableComponent implements OnInit {
     const dialogRef = this.dialog.open(PositionSelectionComponent, {
       width: '250px',
 
-      data: { employeeId: this.employeeId, positions: this.positions.filter(y => !this.pk.some(x => x.positionId === y.id)) }
+      data: { employeeId: this.employeeId, positions: this.positions.filter(y => !this.pk.some(x => x.positionId === y.id)), startOfWorkDate: this.employee.startOfWorkDate }
     });
 
     dialogRef.afterClosed().subscribe(selectedPosition => {
@@ -122,12 +133,11 @@ export class PositionEmployeeTableComponent implements OnInit {
   editPosition(row: any,positionName:any) {
     const dialogRef = this.dialog.open(EditEmployeePositionComponent, {
       width: '250px',
-      data:{ row,positionName: this.positions.find(pos => pos.id === row.positionId)?.name }}
+      data:{ row,positionName: this.positions.find(pos => pos.id === row.positionId)?.name, startOfWorkDate: this.employee.startOfWorkDate} }
     );
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        console.log("result from edit", result)
         this.keepTheChanges(result);
       }
     });
@@ -178,9 +188,6 @@ export class PositionEmployeeTableComponent implements OnInit {
 
   updatePosition(data: any) {
     const ee: PositionEmployeeDto = data as PositionEmployeeDto;
-    // ee.ismanagerial = true;
-    // ee.employeeId = this.employeeId;
-    console.log("data from edit ", data)
     this._employeeService.updatePositionEmployee(this.employeeId, data.positionId, data).subscribe({
       next: (responseData: any) => {
         console.log(`Successfully updated position employee with ID ${ee.positionId} for employee with ID ${ee.employeeId}`);

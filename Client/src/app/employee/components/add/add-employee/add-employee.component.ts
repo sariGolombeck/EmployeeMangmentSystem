@@ -76,7 +76,7 @@ export class AddEmployeeComponent implements OnInit {
     const positionEmployee = this._formBuilder.group({
       name: p.name,
       positionId: [p.id, Validators.required],
-      entryDateIntoOffice: [Date(), [Validators.required, (control: AbstractControl) => validateEntryDate(control, this.form.get('startOfWorkDate')?.value)]],
+      entryDateIntoOffice: [Date, [Validators.required, (control: AbstractControl) => validateEntryDate(control, this.form.get('startOfWorkDate')?.value)]],
       ismanagerial: [false]
     });
     this.positionEmployeeForms.push(positionEmployee);

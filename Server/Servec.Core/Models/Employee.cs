@@ -22,7 +22,7 @@ namespace Server.Core.Entities
         public string LastName { get; set; }
         public DateTime BirthDate { get; set; }
         public Gender Gender { get; set; } = 0;
-        public DateTime startOfWorkDate { get; set; }
+        public DateTime StartOfWorkDate { get; set; }
 
 
     }

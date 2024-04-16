@@ -9,16 +9,18 @@
    </mat-select>
  </mat-form-field>
  <div *ngFor="let form of positionForms; let i = index" class="position-form" [formGroup]="form">
-   <h3>Position: {{data.positions[i].name}}</h3>
+   <h3> {{data.positions[i].name}}</h3>
    <mat-form-field>
      <input matInput formControlName="entryDateIntoOffice" placeholder="Entry date into the position" [matDatepicker]="picker" required>
      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-     <mat-datepicker #picker></mat-datepicker>
+     <mat-datepicker #picker></mat-datepicker>   
+       <mat-error *ngIf="form.get('entryDateIntoOffice')?.hasError('invalidEntryDate')">Entry date must be after start of work date</mat-error>
      <mat-error *ngIf="form.get('entryDateIntoOffice')?.hasError('required')">Entry date is required</mat-error>
-     <mat-error *ngIf="form.get('entryDateIntoOffice')?.hasError('invalidEntryDate')">Entry date must be after start of work date</mat-error>
+
    </mat-form-field>
    <mat-checkbox formControlName="ismanagerial">Is Managerial</mat-checkbox>
  </div>
+ 
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">Cancel</button>

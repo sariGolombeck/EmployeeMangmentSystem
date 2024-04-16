@@ -18,6 +18,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { ActivatedRoute } from '@angular/router';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
+import { DisplayDetailsAndPositionsComponent } from './components/update/display-details-and-positions/display-details-and-positions.component';
 import {
   FormBuilder,
   Validators,
@@ -63,7 +64,7 @@ import { EditEmployeePositionComponent } from './components/update/edit-employee
 import { PositionSelectionComponent } from './components/update/position-selection/position-selection.component';
 import { AddEmployeeComponent } from './components/add/add-employee/add-employee.component';
 @NgModule({
-  declarations: [DateOnlyPipe, DeleteEmployeeConfirmationDialogComponent, PositionSelectionComponent, UpdateEmployeeComponent, EditEmployeePositionComponent, PositionEmployeeTableComponent, EmployeesComponent, AddEmployeeComponent],
+  declarations: [DisplayDetailsAndPositionsComponent, DateOnlyPipe, DeleteEmployeeConfirmationDialogComponent, PositionSelectionComponent, UpdateEmployeeComponent, EditEmployeePositionComponent, PositionEmployeeTableComponent, EmployeesComponent, AddEmployeeComponent],
   imports: [
     MatDialogModule,
     MatFormFieldModule,
@@ -107,7 +108,7 @@ import { AddEmployeeComponent } from './components/add/add-employee/add-employee
 
 
   ],
-  exports: [
+  exports: [DisplayDetailsAndPositionsComponent,
     MatTableModule
     , DeleteEmployeeConfirmationDialogComponent,
     MatStepperModule,
@@ -115,7 +116,7 @@ import { AddEmployeeComponent } from './components/add/add-employee/add-employee
     RouterModule,
     AddEmployeeComponent, MatStepperModule,
     CdkStepperModule, UpdateEmployeeComponent,
-    PositionEmployeeTableComponent, EditEmployeePositionComponent, PositionSelectionComponent,DateOnlyPipe
+    PositionEmployeeTableComponent, EditEmployeePositionComponent, PositionSelectionComponent, DateOnlyPipe
   ],
   providers: [PositionSelectionComponent, EmployeeService, MatStepper, MatStepper, provideNativeDateAdapter(), PositionService,], // Provide the native date adapter
 })

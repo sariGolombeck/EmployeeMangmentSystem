@@ -16,6 +16,6 @@ namespace Server.Core.DTOs
         public string LastName { get; set; }
         public DateTime BirthDate { get; set; }
         public Gender Gender { get; set; }
-        public DateTime startOfWorkDate { get; set; }
+        public DateTime StartOfWorkDate { get; set; }
     }
 }

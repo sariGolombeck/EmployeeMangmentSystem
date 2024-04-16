@@ -47,7 +47,7 @@ namespace Server.Data.Repositories
             e.Identity = employee.Identity;
             e.Gender = employee.Gender;
             e.BirthDate = employee.BirthDate;
-            e.startOfWorkDate = employee.startOfWorkDate;
+            e.StartOfWorkDate = employee.StartOfWorkDate;
 
             await _context.SaveChangesAsync();
             return e;

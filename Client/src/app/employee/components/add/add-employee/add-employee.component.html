@@ -116,7 +116,7 @@
       <form [formGroup]="form">
         <mat-form-field>
           <mat-label>Beginig work date</mat-label>
-          <input matInput [matDatepicker]="picker2" formControlName="startOfWorkDate" placeholder="Enter your date of birth" formControlName="startOfWorkDate">
+          <input matInput [matDatepicker]="picker2"  placeholder="Enter your date of birth" formControlName="startOfWorkDate">
           <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
           <mat-datepicker #picker2></mat-datepicker>
         </mat-form-field>
@@ -149,19 +149,18 @@
     {{position.name}}
     <mat-form-field>
      
-      <input matInput [matDatepicker]="picker" placeholder="Choose entry date" 
+      <input matInput [matDatepicker]="picker" formControlName="entryDateIntoOffice" placeholder="Choose entry date" 
              (dateChange)="updateEntryDateIntoOffice(i, $event.value)">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
-      <mat-error *ngIf="positionEmployeeForms.controls[i].get('entryDateIntoOffice')?.hasError('required')">Entry date is required</mat-error>
+
       <mat-error *ngIf="positionEmployeeForms.controls[i].get('entryDateIntoOffice')?.hasError('invalidEntryDate')">Entry date must be after start of work date</mat-error>
-    
+      <mat-error *ngIf="positionEmployeeForms.controls[i].get('entryDateIntoOffice')?.hasError('required')">Entry date is required</mat-error>
     </mat-form-field>
 
     <mat-checkbox [formControl]="positionEmployeeForms.controls[i].get('ismanagerial')" (change)="updateIsManagerialState(i, $event.checked)">
       Is Managerial
     </mat-checkbox>
-
     
   </form>
 </mat-step>

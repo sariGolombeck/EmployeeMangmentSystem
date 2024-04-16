@@ -33,10 +33,13 @@ export class UpdateEmployeeComponent implements OnInit {
     private _router: Router) { }
 
   ngOnInit(): void {
+    if (typeof sessionStorage !== 'undefined') {
+
     if (sessionStorage.getItem("token") == "") { this._router.navigate(['/login']) }
     this.route.params.subscribe(params => {
       this.employeeId = +params['id'];
     });
+    }
     this.getEmployeePositions();
     this.getEmployeeById();
     this.getPositions();

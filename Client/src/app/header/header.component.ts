@@ -17,6 +17,7 @@ import { MatIcon } from '@angular/material/icon'  ;
 // export class HeaderComponent {
 // constructor(router: Router) {}
 // }
+import matMenuTriggerFor from '@angular/material/menu';
 import { Router } from '@angular/router';
 import { Employee } from '../employee/models/employee';
 import { EmployeeService } from '../employee/employee.service';
@@ -34,6 +35,12 @@ import { HttpClientModule } from '@angular/common/http';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
+onGetPosition() {
+  this.router.navigate(['positions']);
+}
+onMoreInfoClick() {
+throw new Error('Method not implemented.');
+}
 logout() {
 throw new Error('Method not implemented.');
 }

@@ -49,10 +49,20 @@ export function dateValidator(control: AbstractControl): { [key: string]: any } 
 
 //   return null;
 // }
-export function validateEntryDate(control: AbstractControl, startOfWorkDate: Date): { [key: string]: any } | null {
-  const entryDate = new Date(control.value);
-  if (entryDate < startOfWorkDate)
-    return { 'invalidEntryDate': true }
-  return null;
-}
+// export function validateEntryDate(control: AbstractControl, startOfWorkDate: Date): { [key: string]: any } | null {
+//   const entryDate = new Date(control.value);
+//   if (entryDate < startOfWorkDate)
+//     {
+//     console.log("eval", (entryDate < startOfWorkDate));
+//     console.log("the golobal start firsty", startOfWorkDate,entryDate);
+//     return { 'invalidEntryDate': true }
+//     }
+//   return null;
+// }
 
+export function validateEntryDate(control: AbstractControl, startOfWorkDate: Date): { [key: string]: any } | null {
+    const entryDate = new Date(control.value);
+    var currentDate: Date = new Date(startOfWorkDate);
+    console.log("start", startOfWorkDate,"entry", entryDate, currentDate);
+    return entryDate==null || entryDate < currentDate ? { 'invalidEntryDate': true } : null;
+}

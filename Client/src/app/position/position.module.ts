@@ -15,6 +15,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { ActivatedRoute } from '@angular/router';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
+import { PositionsComponent } from './components/positions/positions.component';
 import {
   FormBuilder,
   Validators,
@@ -53,7 +54,7 @@ import { PositionService } from '../position/position.service';
 import { AddPositionComponent } from './components/add-position/add-position.component';
 import { PositionRoutingModule } from './position-routing.module';
 @NgModule({
-  declarations: [AddPositionComponent],
+  declarations: [AddPositionComponent,PositionsComponent],
   imports: [
     MatDialogModule,
     MatFormFieldModule,
@@ -98,7 +99,7 @@ PositionRoutingModule
   ],
   exports: [
     MatTableModule,
-    
+    PositionsComponent,
     RouterModule,
     AddPositionComponent, MatStepperModule,
   ],

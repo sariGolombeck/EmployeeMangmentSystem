@@ -48,15 +48,138 @@ namespace Server.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime>("StartOfWorkDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
-
-                    b.Property<DateTime>("startOfWorkDate")
-                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
                     b.ToTable("Employees");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            BirthDate = new DateTime(1990, 5, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FirstName = "John",
+                            Gender = 0,
+                            Identity = "123456789",
+                            LastName = "Doe",
+                            StartOfWorkDate = new DateTime(2010, 8, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true
+                        },
+                        new
+                        {
+                            Id = 2,
+                            BirthDate = new DateTime(1985, 10, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FirstName = "Jane",
+                            Gender = 0,
+                            Identity = "987654321",
+                            LastName = "Smith",
+                            StartOfWorkDate = new DateTime(2008, 6, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true
+                        },
+                        new
+                        {
+                            Id = 3,
+                            BirthDate = new DateTime(1982, 3, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FirstName = "Michael",
+                            Gender = 0,
+                            Identity = "567891234",
+                            LastName = "Johnson",
+                            StartOfWorkDate = new DateTime(2005, 9, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true
+                        },
+                        new
+                        {
+                            Id = 4,
+                            BirthDate = new DateTime(1995, 12, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FirstName = "Emily",
+                            Gender = 0,
+                            Identity = "345678912",
+                            LastName = "Williams",
+                            StartOfWorkDate = new DateTime(2012, 4, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true
+                        },
+                        new
+                        {
+                            Id = 5,
+                            BirthDate = new DateTime(1978, 7, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FirstName = "David",
+                            Gender = 0,
+                            Identity = "789123456",
+                            LastName = "Brown",
+                            StartOfWorkDate = new DateTime(2003, 11, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true
+                        },
+                        new
+                        {
+                            Id = 6,
+                            BirthDate = new DateTime(1991, 9, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FirstName = "Sarah",
+                            Gender = 0,
+                            Identity = "654321789",
+                            LastName = "Jones",
+                            StartOfWorkDate = new DateTime(2015, 2, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true
+                        },
+                        new
+                        {
+                            Id = 7,
+                            BirthDate = new DateTime(1987, 2, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FirstName = "Daniel",
+                            Gender = 0,
+                            Identity = "432189765",
+                            LastName = "Martinez",
+                            StartOfWorkDate = new DateTime(2006, 7, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true
+                        },
+                        new
+                        {
+                            Id = 8,
+                            BirthDate = new DateTime(1980, 6, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FirstName = "Jessica",
+                            Gender = 0,
+                            Identity = "876543219",
+                            LastName = "Garcia",
+                            StartOfWorkDate = new DateTime(2002, 10, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true
+                        },
+                        new
+                        {
+                            Id = 9,
+                            BirthDate = new DateTime(1975, 11, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FirstName = "Christopher",
+                            Gender = 0,
+                            Identity = "918273645",
+                            LastName = "Lee",
+                            StartOfWorkDate = new DateTime(1998, 5, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true
+                        },
+                        new
+                        {
+                            Id = 10,
+                            BirthDate = new DateTime(1989, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FirstName = "Amanda",
+                            Gender = 0,
+                            Identity = "219876543",
+                            LastName = "Taylor",
+                            StartOfWorkDate = new DateTime(2018, 8, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true
+                        },
+                        new
+                        {
+                            Id = 11,
+                            BirthDate = new DateTime(1993, 8, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FirstName = "Matthew",
+                            Gender = 0,
+                            Identity = "654987321",
+                            LastName = "Anderson",
+                            StartOfWorkDate = new DateTime(2009, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true
+                        });
                 });
 
             modelBuilder.Entity("Server.Core.Entities.Position", b =>
@@ -81,6 +204,43 @@ namespace Server.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Positions");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Description = "Responsible for developing and maintaining software applications.",
+                            Name = "Software Developer",
+                            PositionStatus = true
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Description = "Oversees the marketing department and develops marketing strategies.",
+                            Name = "Marketing Manager",
+                            PositionStatus = true
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Description = "Analyzes financial data and provides insights to support decision-making.",
+                            Name = "Financial Analyst",
+                            PositionStatus = true
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Description = "Handles administrative tasks within the human resources department.",
+                            Name = "HR Coordinator",
+                            PositionStatus = true
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Description = "Assists customers with inquiries, complaints, and product/service information.",
+                            Name = "Customer Service Representative",
+                            PositionStatus = true
+                        });
                 });
 
             modelBuilder.Entity("Server.Core.Entities.PositionEmployee", b =>
