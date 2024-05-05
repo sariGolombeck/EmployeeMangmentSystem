@@ -22,10 +22,6 @@ export class AddPositionComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    if (sessionStorage.getItem("token") == "") {
-      console.log("no token");
-      this._router.navigate(['/login']);
-    }
     this.positionForm = this.formBuilder.group({
       name: ['', Validators.required],
       description: ['', Validators.required]
@@ -38,17 +34,14 @@ export class AddPositionComponent implements OnInit {
     }
     const formData = this.positionForm.value;
     console.log("formdata of position", formData);
-    // const newPosition= new PositionPostModel(formData.name, formData.description);
 
     this._positionService.addPosition(formData).subscribe(({
       next: (response) => {
         console.log('Position added successfully:', response);
         this.location.back()
-        // נוסיף כאן קוד נוסף לטיפול במצב ההצלחה
       },
       error: (error) => {
         console.error('Failed to add position:', error);
-        // נוסיף כאן קוד נוסף לטיפול במצב השגיאה
       }
     }))
   }

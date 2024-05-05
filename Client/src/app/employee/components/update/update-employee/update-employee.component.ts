@@ -9,13 +9,16 @@ import { Position } from '../../../../position/models/position';
 import { Employee } from '../../../models/employee';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { dateValidator, identityValidator, nameValidator, validateEntryDate } from '../../../../validtaionTest/validation';
-
+import { ConfirmationDialogComponent } from '../confirmation-dialog.component/save-editing-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-update-employee',
   templateUrl: './update-employee.component.html',
   styleUrls: ['./update-employee.component.scss']
 })
 export class UpdateEmployeeComponent implements OnInit {
+
   employee!: Employee;
   employeeForm!: FormGroup;
   isLinear!: boolean;
@@ -30,16 +33,15 @@ export class UpdateEmployeeComponent implements OnInit {
     private _formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private _snackBar: MatSnackBar,
-    private _router: Router) { }
+    private _router: Router,
+    private dialog: MatDialog,
+  private location: Location) { }
 
   ngOnInit(): void {
-    if (typeof sessionStorage !== 'undefined') {
-
-    if (sessionStorage.getItem("token") == "") { this._router.navigate(['/login']) }
     this.route.params.subscribe(params => {
       this.employeeId = +params['id'];
     });
-    }
+    
     this.getEmployeePositions();
     this.getEmployeeById();
     this.getPositions();
@@ -54,8 +56,15 @@ export class UpdateEmployeeComponent implements OnInit {
           this.addPositionFormGroup(position);
         });
       },
-      error: (e) => console.error(e),
+      error: (e) => {console.error(e),
+        this._snackBar.open('Not found employee', 'Close', {
+          duration: 5000,
+          panelClass: ['failure-snackbar'],
+        });
+        this._router.navigate(['employees']);
+      }
     });
+
   }
 
   getEmployeePositions() {
@@ -63,12 +72,10 @@ export class UpdateEmployeeComponent implements OnInit {
       next: (data) => {
         data.forEach((pee: PositionEmployeePostModel) => {
           this.pe.push(pee);
-          // this.addPositionEmployeeForm(pee);
         });
       },
-      error: (err) => {
-        console.error('Error fetching employee:', err);
-      }
+      error: (err) =>  console.error('Error fetching positons:', err)
+
     });
   }
 
@@ -80,6 +87,11 @@ export class UpdateEmployeeComponent implements OnInit {
       },
       error: (err) => {
         console.error('Error fetching employee:', err);
+        this._snackBar.open('Not found employee', 'Close', {
+          duration: 5000,
+          panelClass: ['success-snackbar'],
+        });
+        this._router.navigate(['employees']);
       }
     });
   }
@@ -96,14 +108,6 @@ export class UpdateEmployeeComponent implements OnInit {
     });
   }
 
-  // addPositionEmployeeForm(pee: PositionEmployeePostModel) {
-  //   const positionEmployee = this._formBuilder.group({
-  //     positionId: [pee.positionId, Validators.required],
-  //     entryDateIntoOffice: [pee.entryDateIntoOffice, [Validators.required, (control: AbstractControl) => validateEntryDate(control, this.employeeForm.get('startOfWorkDate')?.value)]],
-  //     isManagerial: [pee.ismanagerial]
-  //   });
-  //   this.peForms.push(positionEmployee);
-  // }
   onSubmit() {
     console.log("the form beforoe", this.employeeForm?.value)
     const employee: Employee = {
@@ -117,6 +121,7 @@ export class UpdateEmployeeComponent implements OnInit {
           duration: 5000,
           panelClass: ['success-snackbar'],
         });
+        this._router.navigate(['/employees']);
 
       },
 
@@ -140,10 +145,7 @@ export class UpdateEmployeeComponent implements OnInit {
     },
 
     )
-  }
-  // this.go()
-
-
+    }
 
 
   saveBeforeChoosingPositions() {
@@ -162,7 +164,10 @@ export class UpdateEmployeeComponent implements OnInit {
       },
     })
   }
+  cancelStepper() {
+    this.location.back()
 
+    }
   addPositionFormGroup(position: Position) {
     const positionFormGroup = this._formBuilder.group({
       position: this._formBuilder.group({
@@ -172,4 +177,22 @@ export class UpdateEmployeeComponent implements OnInit {
       }),
     });
   }
+
+
+
+async openConfirmationDialog() {
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      width: '250px',
+      data: { message: 'Do you want to save details and return to the employees table?' }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+      this.onSubmit();
+        
+      }
+    });
+  }
+
+
 }

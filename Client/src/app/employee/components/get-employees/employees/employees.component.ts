@@ -9,6 +9,8 @@ import { Router } from '@angular/router';
 import { DeleteEmployeeConfirmationDialogComponent } from '../../delete-employee-confirmation-dialog/delete-employee-confirmation-dialog.component';
 import { Employee } from '../../../models/employee';
 import { EmployeeService } from '../../../employee.service';
+import { AuthService } from '../../../../register/auth.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -24,6 +26,8 @@ export class EmployeesComponent implements OnInit {
   @ViewChild(MatSort) sort!: MatSort;
 
   constructor(private _employeeService: EmployeeService,
+    private _authService: AuthService,
+    private snackBar : MatSnackBar,
     private _router: Router,
     private dialog: MatDialog // Inject MatDialog
   ) {
@@ -59,18 +63,23 @@ export class EmployeesComponent implements OnInit {
   }
 
   editEmployee(employee: Employee) {
-    if(sessionStorage.getItem("token")=="")
-    this._router.navigate(['login', employee.id]);
-  
-      this._router.navigate(['employees/update', employee.id]);
+ 
+    this._router.navigate(['employees/update', employee.id]);
     
+
   }
 
   deleteEmployee(employee: Employee) {
-    if(sessionStorage.getItem('token') == ""){
-      this._router.navigate(['/login']);
+
+    if(!this._authService.isAuthorized())
+      {
+      this.displayUnauthorizedAccessError();
+    this._router.navigate(['login'])
       
-    }
+      }
+      if(this._authService.isAuthorized()){
+        
+      
     const dialogRef = this.dialog.open(DeleteEmployeeConfirmationDialogComponent, {
       width: '350px',
       data: employee
@@ -91,4 +100,11 @@ export class EmployeesComponent implements OnInit {
       }
     });
   }
+}
+   displayUnauthorizedAccessError(): void {
+    this.snackBar.open('You do not have access. Redirecting to authorization page', 'Error', {
+      duration: 3000,
+      panelClass: ['mat-snackbar-error']
+    });
+}
 }

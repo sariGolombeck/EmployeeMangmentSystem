@@ -5,10 +5,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatLabel } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClient, HttpClientModule, HttpHandler, HttpHeaderResponse } from '@angular/common/http';
+import {   HttpHandler, HttpHeaderResponse } from '@angular/common/http';
 
 import { User } from '../user';
-import { LoginService } from '../login.service';
+import { AuthService } from '../auth.service';
 import { Location } from '@angular/common';
 import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
@@ -16,14 +16,14 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
   standalone: true,
-  imports: [MatFormFieldModule, MatInputModule, MatButtonModule, ReactiveFormsModule, HttpClientModule],
-  providers: [LoginService],
+  imports: [MatFormFieldModule, MatInputModule, MatButtonModule, ReactiveFormsModule],
+  providers: [AuthService],
 })
 export class LoginComponent implements OnInit {
 
   userForm!: FormGroup;
 
-  constructor(private _loginService: LoginService,
+  constructor(private _authService: AuthService,
     private location: Location, private _snackBar: MatSnackBar
   ) { }
 
@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
   onSubmit(): void {
     const user: User = this.userForm.value;
     console.log('User submitted:', user);
-    this._loginService.login(user).subscribe({
+    this._authService.auth(user).subscribe({
       next: (response: { token: any }) => {
         console.log('User logged in successfully:', response);
         const token = response.token;

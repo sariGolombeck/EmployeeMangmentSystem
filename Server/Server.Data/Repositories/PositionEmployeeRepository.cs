@@ -35,7 +35,6 @@ namespace EmployeeManagement.Data.Repositories
         }
         public async Task<PositionEmployee> AddPositionToEmployeeAsync(PositionEmployee employeePosition)
         {
-            // בדיקה האם התפקיד כבר קיים בטבלה והשדה IsActive הוא false
             var existingPosition = await _context.PositionEmployee
                 .FirstOrDefaultAsync(ep => ep.EmployeeId == employeePosition.EmployeeId
                                           && ep.PositionId == employeePosition.PositionId
@@ -43,9 +42,6 @@ namespace EmployeeManagement.Data.Repositories
 
             if (existingPosition != null)
                 return await UpdatePositionToEmployeeAsync(employeePosition.EmployeeId, employeePosition.PositionId, employeePosition);
-
-
-            // אם התפקיד אינו קיים בטבלה או שהוא כבר פעיל, נוסיף אותו בצורה רגילה
             await _context.PositionEmployee.AddAsync(employeePosition);
             await _context.SaveChangesAsync();
             return employeePosition;

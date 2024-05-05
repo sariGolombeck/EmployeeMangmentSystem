@@ -1,28 +1,38 @@
 
 <mat-toolbar color="primary">
-  <span>Employees Management System</span>
+  <h1>The manager- employee managment system</h1>
   <span class="fill-remaining-space"></span>
+  
   <button mat-icon-button aria-label="Home" routerLink="/home" (click)="onHomeClick()" matTooltip="Home">
     <mat-icon>home</mat-icon>
   </button>
+  
   <button mat-icon-button aria-label="Employees List" (click)="onAllEmployees()" matTooltip="Employees List">
     <mat-icon>group</mat-icon>
   </button>
-  <button mat-icon-button aria-label="More Info"(click)="onMoreInfoClick()" matTooltip="More Info">
+  
+  <button mat-icon-button aria-label="More Info" (click)="onMoreInfoClick()" matTooltip="More Info">
     <mat-icon>info</mat-icon>
   </button>
-  <button mat-icon-button aria-label="More Options" (click)="onGetPosition()" matTooltip="More Options">
+  
+  <!-- <button mat-icon-button aria-label="More Options" (click)="onMoreOptions()" matTooltip="More Options">
     <mat-icon>more_horiz</mat-icon>
   </button>
+   -->
   <button mat-icon-button aria-label="Login" (click)="onLoginClick()" matTooltip="Login">
     <mat-icon>login</mat-icon>
   </button>
+  
   <button mat-icon-button aria-label="Download" (click)="onDownloadClick()" matTooltip="Download">
     <mat-icon>download</mat-icon>
   </button>
-  <button mat-icon-button aria-label="Add Position" (click)="addPosition()" matTooltip="Add Position">
+  <button mat-icon-button aria-label="Positons list" (click)="showPositions()" matTooltip="Add Employee">
     <mat-icon>work</mat-icon>
   </button>
+  <button mat-icon-button aria-label="Add Position" (click)="addPosition()" matTooltip="Add Position">
+    <mat-icon>add_box</mat-icon>
+  </button>
+  
   <button mat-icon-button aria-label="Logout" (click)="onLogOut()" matTooltip="Logout">
     <mat-icon>exit_to_app</mat-icon>
   </button>

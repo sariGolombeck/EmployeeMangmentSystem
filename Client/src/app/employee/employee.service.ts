@@ -1,12 +1,3 @@
-// import { Injectable } from '@angular/core';
-
-// @Injectable({
-//   providedIn: 'root'
-// })
-// export class EmployeeService {
-
-//   constructor() { }
-// }
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -71,10 +62,5 @@ export class EmployeeService {
     });
     return this.http.put(`${this.basicUrl}/${id}`, employee, { headers: headers })
   }
+
 }
-// addPositionToEmployee(employeeId: number, position: PositionEmployeePostModel): Observable<any> {
-//   // כאן נוסיף את ה-employeeId לכתובת ה-URL
-//   const url = `${this.basicUrl}/${230}/positions`;
-//   // שליחת בקשת POST לשרת עם הגוף של ה-position
-//   return this.http.post<any>(url, position);
-// }

@@ -2,10 +2,10 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EmployeesComponent } from './components/get-employees/employees/employees.component';
-import { EmployeeRoutingModule } from './employee-routing.module';
+import { EmployeeRoutingModule } from './employee-routes.module';
 import { RouterModule } from '@angular/router';
 import { EmployeeService } from './employee.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -63,8 +63,11 @@ import { DeleteEmployeeConfirmationDialogComponent } from './components/delete-e
 import { EditEmployeePositionComponent } from './components/update/edit-employee-position/edit-employee-position.component';
 import { PositionSelectionComponent } from './components/update/position-selection/position-selection.component';
 import { AddEmployeeComponent } from './components/add/add-employee/add-employee.component';
+import { ConfirmationDialogComponent } from './components/update/confirmation-dialog.component/save-editing-dialog.component';
+import { AuthService } from '../register/auth.service';
+import { AuthGuard } from '../auth-guard';
 @NgModule({
-  declarations: [DisplayDetailsAndPositionsComponent, DateOnlyPipe, DeleteEmployeeConfirmationDialogComponent, PositionSelectionComponent, UpdateEmployeeComponent, EditEmployeePositionComponent, PositionEmployeeTableComponent, EmployeesComponent, AddEmployeeComponent],
+declarations: [ConfirmationDialogComponent,DisplayDetailsAndPositionsComponent, DateOnlyPipe, DeleteEmployeeConfirmationDialogComponent, PositionSelectionComponent, UpdateEmployeeComponent, EditEmployeePositionComponent, PositionEmployeeTableComponent, EmployeesComponent, AddEmployeeComponent],
   imports: [
     MatDialogModule,
     MatFormFieldModule,
@@ -105,10 +108,9 @@ import { AddEmployeeComponent } from './components/add/add-employee/add-employee
     MatInputModule,
     MatButtonModule,
     MatDatepickerModule,
-
-
+    MatDialogTitle,
   ],
-  exports: [DisplayDetailsAndPositionsComponent,
+  exports: [DisplayDetailsAndPositionsComponent,ConfirmationDialogComponent,
     MatTableModule
     , DeleteEmployeeConfirmationDialogComponent,
     MatStepperModule,
@@ -118,6 +120,6 @@ import { AddEmployeeComponent } from './components/add/add-employee/add-employee
     CdkStepperModule, UpdateEmployeeComponent,
     PositionEmployeeTableComponent, EditEmployeePositionComponent, PositionSelectionComponent, DateOnlyPipe
   ],
-  providers: [PositionSelectionComponent, EmployeeService, MatStepper, MatStepper, provideNativeDateAdapter(), PositionService,], // Provide the native date adapter
+  providers: [AuthService,AuthGuard, PositionSelectionComponent, EmployeeService, MatStepper, MatStepper, provideNativeDateAdapter(), PositionService,], // Provide the native date adapter
 })
 export class EmployeeModule { }

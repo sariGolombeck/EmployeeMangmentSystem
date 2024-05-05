@@ -32,7 +32,7 @@ namespace Server.Data.Repositories
         public async Task<Employee> GetByIdAsync(int id)
         {
             return await _context.Employees
-                        .FirstOrDefaultAsync(c => c.Id == id);
+                        .FirstOrDefaultAsync(c => c.Id == id&&c.Status);
         }
         public async Task<Employee> UpdateAsync(Employee employee)
         {

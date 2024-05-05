@@ -2,42 +2,27 @@ import { Component } from '@angular/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon'  ;
-// import { MatMenuModule } from '@angular/material/menu';
-// import { MatMenu } from '@angular/material/menu';
-// import { Router } from 'express';
-// @Component({
-//   selector: 'app-header',
-//   standalone: true,
-//   imports: [MatToolbarModule,
-//     MatButtonModule,MatIcon,MatMenuModule, MatMenu,MatMenuTrigger],
-//   templateUrl: './header.component.html',
-//   styleUrl: './header.component.scss'
-// })
-
-// export class HeaderComponent {
-// constructor(router: Router) {}
-// }
-import matMenuTriggerFor from '@angular/material/menu';
 import { Router } from '@angular/router';
 import { Employee } from '../employee/models/employee';
 import { EmployeeService } from '../employee/employee.service';
 import * as XLSX from 'xlsx';
 import { HttpClientModule } from '@angular/common/http';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-header',
   standalone: true,
   imports: [MatToolbarModule,
+    MatTooltipModule,
+
         MatButtonModule,MatIcon,HttpClientModule],
         providers:[EmployeeService],
-  // imports: [MatToolbarModule, MatButtonModule, MatMenuModule],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-onGetPosition() {
-  this.router.navigate(['positions']);
-}
+showPositions() {
+  this.router.navigate(['positions']);}
 onMoreInfoClick() {
 throw new Error('Method not implemented.');
 }

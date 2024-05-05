@@ -118,13 +118,8 @@
       <!-- Step 8: Submit -->
       <mat-step>
           <ng-template matStepLabel>Save employee details</ng-template>
-          <button mat-button (click)="onSubmit()">Save</button>
+          <button mat-button (click)="openConfirmationDialog()">Save</button>
+          <button mat-button (click)="cancelStepper()">Cancel</button>
       </mat-step>         
-       <!-- Step 7: Position Employee -->
-
-       <!-- <mat-step>
-          <ng-template matStepLabel>Position Employee</ng-template>
-          <positions-employee-table></positions-employee-table>
-      </mat-step> -->
   </mat-stepper>
 </div>

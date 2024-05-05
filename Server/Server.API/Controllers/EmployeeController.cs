@@ -32,16 +32,6 @@ namespace Server.API.Controllers
                 return NotFound();
             return Ok(_mapper.Map<IEnumerable<EmployeeDto>>(workers));
         }
-
-        //[HttpGet]
-        //public async Task<ActionResult> Get()
-        //{
-        //    var workers = await _workerService.GetAllAsync();
-        //    if (workers is null)
-        //        return NotFound();
-        //    return Ok((_mapper.Map<IEnumerable<EmployeePostModel>>(workers)));
-        //}
-        // GET api/<WorkerController>/5
         [HttpGet("{id}")]
         public async Task<ActionResult>Get(int id)
         {
@@ -65,6 +55,8 @@ namespace Server.API.Controllers
         public async Task<ActionResult> Put(int id, [FromBody] EmployeePostModel worker)
         {
             var w = await _workerService.UpdateAsync(id,_mapper.Map<Employee>(worker));
+            if (w is null)
+                return NotFound();
             return Ok(_mapper.Map<EmployeeDto>(w));
         }
         //DELETE api/<WorkerController>/5

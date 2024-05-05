@@ -52,7 +52,7 @@ import { from } from 'rxjs';
 import { MomentDateAdapter } from '@angular/material-moment-adapter'; // Optional for Moment.js
 import { PositionService } from '../position/position.service';
 import { AddPositionComponent } from './components/add-position/add-position.component';
-import { PositionRoutingModule } from './position-routing.module';
+import { PositionRoutingModule } from './position-routes.module';
 @NgModule({
   declarations: [AddPositionComponent,PositionsComponent],
   imports: [
@@ -103,6 +103,6 @@ PositionRoutingModule
     RouterModule,
     AddPositionComponent, MatStepperModule,
   ],
-  providers: [PositionService, MatStepper, MatStepper, provideNativeDateAdapter(), PositionService,], // Provide the native date adapter
+  providers: [PositionService, MatStepper, MatStepper, provideNativeDateAdapter(), PositionService,], 
 })
 export class PositionModule { }

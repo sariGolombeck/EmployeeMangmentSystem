@@ -1,0 +1,25 @@
+.modern-button {
+    /* General button styles */
+    background-color: #4285f4; /* Light blue background */
+    color: white; /* White text */
+    padding: 15px 30px; /* Adjust padding as needed */
+    border-radius: 30px; /* Rounded corners */
+    font-weight: bold; /* Bold font */
+    cursor: pointer; /* Indicate clickable area */
+    transition: background-color 0.3s ease; /* Smooth transition on hover */
+    display: inline-block; /* Allow buttons to sit side-by-side */
+    margin: 0 10px; /* Add spacing between buttons */
+    padding: 20px 40px; /* Increase padding to make the button larger */
+    font-size: 18px; /* Increase font size for larger text */
+  
+  }
+  
+  .modern-button:hover {
+    background-color: #337ab7; /* Darker shade on hover */
+  }
+  
+  .modern-button-raised {
+    /* Raised button styles */
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.12); /* Elevation shadow */
+  }
+  

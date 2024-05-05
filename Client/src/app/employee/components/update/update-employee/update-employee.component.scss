@@ -1,27 +1,4 @@
 
-// .mat-stepper-vertical {
-//   margin-top: 8px;
-// }
-// .mat-mdc-form-field {
-//   margin-top: 16px;
-// }.example-form-field {
-//   margin-right: 20px;
-// }
-// .container {
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   height: 100vh; /* גובה מלא של העמוד */
-//   max-width: 40%;
-
-// }
-
-// .stepper {
-//   background-color: #fff; /* צבע רקע */
-//   border-radius: 20px; /* פינות מעוגלות */
-//   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1); /* צל */
-//   padding: 40px; /* רווח פנימי */
-// }
 .container {
   display: flex;
   justify-content: flex-end; /* הצגת הקומפוננטה בצד שמאל */
@@ -29,7 +6,6 @@
   height: 100vh; /* גובה מלא של העמוד */
   width: 100%; /* רוחב מלא של העמוד */
   padding-left: 5px; /* מרווח שמאלי של העמוד */
-  box-sizing: border-box; /* כולל את ה-padding כחלק מהרוחב */
 }
 
 .stepper {
