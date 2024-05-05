@@ -53,8 +53,10 @@ import { MomentDateAdapter } from '@angular/material-moment-adapter'; // Optiona
 import { PositionService } from '../position/position.service';
 import { AddPositionComponent } from './components/add-position/add-position.component';
 import { PositionRoutingModule } from './position-routes.module';
+import { AuthService } from '../register/auth.service';
+import { AuthGuard } from '../auth-guard';
 @NgModule({
-  declarations: [AddPositionComponent,PositionsComponent],
+  declarations: [AddPositionComponent, PositionsComponent],
   imports: [
     MatDialogModule,
     MatFormFieldModule,
@@ -94,7 +96,7 @@ import { PositionRoutingModule } from './position-routes.module';
     MatInputModule,
     MatButtonModule,
     MatDatepickerModule,
-PositionRoutingModule
+    PositionRoutingModule
 
   ],
   exports: [
@@ -103,6 +105,6 @@ PositionRoutingModule
     RouterModule,
     AddPositionComponent, MatStepperModule,
   ],
-  providers: [PositionService, MatStepper, MatStepper, provideNativeDateAdapter(), PositionService,], 
+  providers: [AuthService, AuthGuard, PositionService, MatStepper, MatStepper, provideNativeDateAdapter(), PositionService,],
 })
 export class PositionModule { }

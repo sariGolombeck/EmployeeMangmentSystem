@@ -15,9 +15,11 @@ import { PositionEmployeeDto } from '../../../models/position-employee-dto';
 import { CanActivate, ActivatedRouteSnapshot, ActivatedRoute, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
 import { PositionSelectionComponent } from '../position-selection/position-selection.component';
 @Component({
-  selector: 'app-positions-employee-table',
+  selector: 'app-positions-employee-table', 
+  
+   templateUrl: 'positions-employee-table.component.html',
+
   styleUrls: ['positions-employee-table.component.scss'],
-  templateUrl: 'positions-employee-table.component.html',
 })
 export class PositionEmployeeTableComponent implements OnInit {
   displayedColumns: string[] = ['positionId', 'entryDateIntoOffice', 'ismanagerial', 'actions'];
