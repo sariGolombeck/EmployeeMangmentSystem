@@ -87,6 +87,7 @@
                   <mat-datepicker #picker></mat-datepicker>
                   <mat-error *ngIf="employeeForm.get('birthDate')?.hasError('required')">Birthdate is required</mat-error>
                   <mat-error *ngIf="employeeForm.get('birthDate')?.hasError('ageUnder18')">Employee must be at least 18 years old</mat-error>
+                  <mat-error *ngIf="employeeForm.get('birthDate')?.hasError('invalidDate')">invalid birthDate</mat-error>
               </mat-form-field>
               <div>
                   <button mat-button matStepperPrevious>Back</button>

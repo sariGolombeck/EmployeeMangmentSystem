@@ -27,7 +27,7 @@ export class EmployeesComponent implements OnInit {
 
   constructor(private _employeeService: EmployeeService,
     private _authService: AuthService,
-    private snackBar : MatSnackBar,
+    private snackBar: MatSnackBar,
     private _router: Router,
     private dialog: MatDialog // Inject MatDialog
   ) {
@@ -36,7 +36,7 @@ export class EmployeesComponent implements OnInit {
   addEmployee() {
     this._router.navigate(['employees/add-employee']);
   }
-  
+
   ngOnInit(): void {
     this._employeeService.getAllEmployees().subscribe({
       next: (data) => {
@@ -61,50 +61,47 @@ export class EmployeesComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
-
   editEmployee(employee: Employee) {
- 
+
     this._router.navigate(['employees/update', employee.id]);
-    
-
   }
-
   deleteEmployee(employee: Employee) {
 
-    if(!this._authService.isAuthorized())
-      {
-      this.displayUnauthorizedAccessError();
-    this._router.navigate(['login'])
-      
-      }
-      if(this._authService.isAuthorized()){
-        
-      
-    const dialogRef = this.dialog.open(DeleteEmployeeConfirmationDialogComponent, {
-      width: '350px',
-      data: employee
-    });
+    if (sessionStorage !== undefined)
 
-    dialogRef.afterClosed().subscribe((result: any) => {
-      if (result) {
-        this._employeeService.deleteEmployee(employee.id).subscribe(() => {
-          this._employeeService.getAllEmployees().subscribe({
-            next: (data) => {
-              this.dataSource.data = data; // Update data source with actual employees
-            },
-            error: (err) => {
-              console.error(err);
-            },
-          });
-        });
+      if (!this._authService.isAuthorized()) {
+        this.displayUnauthorizedAccessError();
+        this._router.navigate(['login'])
+
       }
-    });
+    if (this._authService.isAuthorized()) {
+
+
+      const dialogRef = this.dialog.open(DeleteEmployeeConfirmationDialogComponent, {
+        width: '350px',
+        data: employee
+      });
+
+      dialogRef.afterClosed().subscribe((result: any) => {
+        if (result) {
+          this._employeeService.deleteEmployee(employee.id).subscribe(() => {
+            this._employeeService.getAllEmployees().subscribe({
+              next: (data) => {
+                this.dataSource.data = data; // Update data source with actual employees
+              },
+              error: (err) => {
+                console.error(err);
+              },
+            });
+          });
+        }
+      });
+    }
   }
-}
-   displayUnauthorizedAccessError(): void {
+  displayUnauthorizedAccessError(): void {
     this.snackBar.open('You do not have access. Redirecting to authorization page', 'Error', {
       duration: 3000,
       panelClass: ['mat-snackbar-error']
     });
-}
+  }
 }

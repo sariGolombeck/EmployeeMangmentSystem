@@ -38,7 +38,7 @@ export class AddEmployeeComponent implements OnInit {
     if (sessionStorage.getItem('token') === "") {
       this._router.navigate(['/login']);
     }
-    
+
     this.initPositionEmployeeForms();
 
     this.form = this._formBuilder.group({
@@ -111,7 +111,8 @@ export class AddEmployeeComponent implements OnInit {
     this._employeeService.addEmployee(employee).subscribe({
       next: (data: any) => {
         this.newEmployee = data,
-        this.savePositionsEmployee();
+          this.savePositionsEmployee();
+        this._router.navigate(['employees']);
       },
       error: (e: Error) => {
         console.error(e);
