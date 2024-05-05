@@ -1,25 +1,36 @@
+
+/* Responsive image styles */
+.responsive-image {
+  width: 100%; /* Ensures image scales proportionally */
+  max-width: 600px; /* Optional maximum width for larger screens */
+}
+
+/* Responsive button styles */
 .modern-button {
-    /* General button styles */
-    background-color: #4285f4; /* Light blue background */
-    color: white; /* White text */
-    padding: 15px 30px; /* Adjust padding as needed */
-    border-radius: 30px; /* Rounded corners */
-    font-weight: bold; /* Bold font */
-    cursor: pointer; /* Indicate clickable area */
-    transition: background-color 0.3s ease; /* Smooth transition on hover */
-    display: inline-block; /* Allow buttons to sit side-by-side */
-    margin: 0 10px; /* Add spacing between buttons */
-    padding: 20px 40px; /* Increase padding to make the button larger */
-    font-size: 18px; /* Increase font size for larger text */
-  
+  background-color: #4285f4;
+  color: white;
+  padding: 43vw,43vw;
+  border-radius: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: inline-block; /* Allow buttons to sit side-by-side */
+  margin: 0 10px;
+  font-size: 16px; /* Adjusted for better mobile readability */
+  text-align: center; /* Center text for even spacing */
+}
+
+.modern-button:hover {
+  background-color: #337ab7;
+}
+
+.modern-button-raised {
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.12);
+}
+
+/* Media queries for responsive adjustments (optional) */
+@media (max-width: 768px) {
+  .modern-button {
+    margin: 10px auto; /* Center buttons on smaller screens */
   }
-  
-  .modern-button:hover {
-    background-color: #337ab7; /* Darker shade on hover */
-  }
-  
-  .modern-button-raised {
-    /* Raised button styles */
-    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.12); /* Elevation shadow */
-  }
-  
+}

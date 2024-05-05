@@ -15,10 +15,8 @@ import { PositionEmployeeDto } from '../../../models/position-employee-dto';
 import { CanActivate, ActivatedRouteSnapshot, ActivatedRoute, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
 import { PositionSelectionComponent } from '../position-selection/position-selection.component';
 @Component({
-  selector: 'app-positions-employee-table', 
-  
+  selector: 'app-positions-employee-table',
    templateUrl: 'positions-employee-table.component.html',
-
   styleUrls: ['positions-employee-table.component.scss'],
 })
 export class PositionEmployeeTableComponent implements OnInit {
@@ -32,7 +30,6 @@ export class PositionEmployeeTableComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   isLeanar: boolean = false;
-  // @Input() startOfWorkDate!: Date;
 employee!: Employee;
   constructor(
     private _employeeService: EmployeeService,
