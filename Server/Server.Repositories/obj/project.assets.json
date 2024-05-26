@@ -145,11 +145,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\User\\Desktop\\הפרויקט1\\הפרויקט 9\\EmployeeMangmentSystem\\Server\\Server.Repositories\\Server.Service.csproj",
+      "projectUniqueName": "C:\\Users\\User\\Desktop\\תיקיות הפרויקטים מGIT\\הפרויקט 10\\EmployeeMangmentSystem\\Server\\Server.Repositories\\Server.Service.csproj",
       "projectName": "Server.Service",
-      "projectPath": "C:\\Users\\User\\Desktop\\הפרויקט1\\הפרויקט 9\\EmployeeMangmentSystem\\Server\\Server.Repositories\\Server.Service.csproj",
+      "projectPath": "C:\\Users\\User\\Desktop\\תיקיות הפרויקטים מGIT\\הפרויקט 10\\EmployeeMangmentSystem\\Server\\Server.Repositories\\Server.Service.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\User\\Desktop\\הפרויקט1\\הפרויקט 9\\EmployeeMangmentSystem\\Server\\Server.Repositories\\obj\\",
+      "outputPath": "C:\\Users\\User\\Desktop\\תיקיות הפרויקטים מGIT\\הפרויקט 10\\EmployeeMangmentSystem\\Server\\Server.Repositories\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -171,8 +171,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\User\\Desktop\\הפרויקט1\\הפרויקט 9\\EmployeeMangmentSystem\\Server\\Servec.Core\\Server.Core.csproj": {
-              "projectPath": "C:\\Users\\User\\Desktop\\הפרויקט1\\הפרויקט 9\\EmployeeMangmentSystem\\Server\\Servec.Core\\Server.Core.csproj"
+            "C:\\Users\\User\\Desktop\\תיקיות הפרויקטים מGIT\\הפרויקט 10\\EmployeeMangmentSystem\\Server\\Servec.Core\\Server.Core.csproj": {
+              "projectPath": "C:\\Users\\User\\Desktop\\תיקיות הפרויקטים מGIT\\הפרויקט 10\\EmployeeMangmentSystem\\Server\\Servec.Core\\Server.Core.csproj"
             }
           }
         }
@@ -181,6 +181,11 @@
         "warnAsError": [
           "NU1605"
         ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -202,7 +207,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300\\RuntimeIdentifierGraph.json"
       }
     }
   }

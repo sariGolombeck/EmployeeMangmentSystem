@@ -66,6 +66,7 @@ import { AddEmployeeComponent } from './components/add/add-employee/add-employee
 import { ConfirmationDialogComponent } from './components/update/confirmation-dialog.component/save-editing-dialog.component';
 import { AuthService } from '../register/auth.service';
 import { AuthGuard } from '../auth-guard';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 @NgModule({
 declarations: [ConfirmationDialogComponent,DisplayDetailsAndPositionsComponent, DateOnlyPipe, DeleteEmployeeConfirmationDialogComponent, PositionSelectionComponent, UpdateEmployeeComponent, EditEmployeePositionComponent, PositionEmployeeTableComponent, EmployeesComponent, AddEmployeeComponent],
   imports: [
@@ -109,11 +110,15 @@ declarations: [ConfirmationDialogComponent,DisplayDetailsAndPositionsComponent, 
     MatButtonModule,
     MatDatepickerModule,
     MatDialogTitle,
+    MatSnackBarModule,
+    
   ],
   exports: [DisplayDetailsAndPositionsComponent,ConfirmationDialogComponent,
     MatTableModule
     , DeleteEmployeeConfirmationDialogComponent,
     MatStepperModule,
+    MatSnackBarModule,
+    
     EmployeesComponent, EmployeeRoutingModule,
     RouterModule,
     AddEmployeeComponent, MatStepperModule,

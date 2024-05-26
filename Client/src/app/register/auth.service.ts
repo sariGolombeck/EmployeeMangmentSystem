@@ -19,6 +19,9 @@ export class AuthService {
     return this.http.post<LoginResponse>(this.baseUrl, user)
   }
   isAuthorized(): boolean {
+    if (typeof sessionStorage === 'undefined' )  
+      return false;
+
     const token = sessionStorage.getItem('token');
     if (!token) {
       // this.router.navigate(['/login']);
@@ -26,6 +29,7 @@ export class AuthService {
     }
     return true;
   }
+
   // getIsTrueToken(): Observable<boolean> {
   //   const headers = new HttpHeaders({
 

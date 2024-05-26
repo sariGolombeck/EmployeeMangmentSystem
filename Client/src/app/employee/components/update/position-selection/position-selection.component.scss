@@ -14,21 +14,22 @@
     }
   
     input.mat-input {
-        width: calc(100% - 36px); // סימן כולל ורווחים משמאל ומימין
+        width: calc(100% - 36px); 
         font-size: 14px;
         padding: 8px;
+        margin: 20px;
         border-radius: 5px;
         padding: 50px;
         border: 1px solid #ccc;
-        box-sizing: border-box; // הכלול גם של גבול ורווחים בפנים
+        box-sizing: border-box; ;
       }
       .mat-select {
-        width: calc(100% - 36px); // סימן כולל ורווחים משמאל ומימין
+        width: calc(100% - 36px);
         font-size: 14px;
         padding: 8px;
         border-radius: 5px;
         border: 1px solid #ccc;
-        box-sizing: border-box; // הכלול גם של גבול ורווחים בפנים
+        box-sizing: border-box; 
       }
       
       .mat-datepicker-toggle {

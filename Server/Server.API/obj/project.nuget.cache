@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "SN/J1wk8mSKaCY2umw82x+GRcLYC069IGQpc4uOlR90+vxiYfUzopxiVa/aVvR3GmMeRryM7TDBazQVVlZPAlw==",
+  "dgSpecHash": "C/aE1nsSgfk=",
   "success": true,
-  "projectFilePath": "C:\\Users\\User\\Desktop\\הפרויקט1\\הפרויקט 9\\EmployeeMangmentSystem\\Server\\Server.API\\Server.API.csproj",
+  "projectFilePath": "C:\\Users\\User\\Desktop\\תיקיות הפרויקטים מGIT\\הפרויקט 10\\EmployeeMangmentSystem\\Server\\Server.API\\Server.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\User\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

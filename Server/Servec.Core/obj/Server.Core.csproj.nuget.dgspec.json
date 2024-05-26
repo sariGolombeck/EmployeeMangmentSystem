@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\User\\Desktop\\הפרויקט1\\הפרויקט 9\\EmployeeMangmentSystem\\Server\\Servec.Core\\Server.Core.csproj": {}
+    "C:\\Users\\User\\Desktop\\תיקיות הפרויקטים מGIT\\הפרויקט 10\\EmployeeMangmentSystem\\Server\\Servec.Core\\Server.Core.csproj": {}
   },
   "projects": {
-    "C:\\Users\\User\\Desktop\\הפרויקט1\\הפרויקט 9\\EmployeeMangmentSystem\\Server\\Servec.Core\\Server.Core.csproj": {
+    "C:\\Users\\User\\Desktop\\תיקיות הפרויקטים מGIT\\הפרויקט 10\\EmployeeMangmentSystem\\Server\\Servec.Core\\Server.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\Desktop\\הפרויקט1\\הפרויקט 9\\EmployeeMangmentSystem\\Server\\Servec.Core\\Server.Core.csproj",
+        "projectUniqueName": "C:\\Users\\User\\Desktop\\תיקיות הפרויקטים מGIT\\הפרויקט 10\\EmployeeMangmentSystem\\Server\\Servec.Core\\Server.Core.csproj",
         "projectName": "Server.Core",
-        "projectPath": "C:\\Users\\User\\Desktop\\הפרויקט1\\הפרויקט 9\\EmployeeMangmentSystem\\Server\\Servec.Core\\Server.Core.csproj",
+        "projectPath": "C:\\Users\\User\\Desktop\\תיקיות הפרויקטים מGIT\\הפרויקט 10\\EmployeeMangmentSystem\\Server\\Servec.Core\\Server.Core.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\Desktop\\הפרויקט1\\הפרויקט 9\\EmployeeMangmentSystem\\Server\\Servec.Core\\obj\\",
+        "outputPath": "C:\\Users\\User\\Desktop\\תיקיות הפרויקטים מGIT\\הפרויקט 10\\EmployeeMangmentSystem\\Server\\Servec.Core\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -39,6 +39,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -66,7 +71,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     }

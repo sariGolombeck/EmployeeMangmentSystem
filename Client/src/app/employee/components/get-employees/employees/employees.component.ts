@@ -1,4 +1,3 @@
-
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
@@ -11,12 +10,10 @@ import { Employee } from '../../../models/employee';
 import { EmployeeService } from '../../../employee.service';
 import { AuthService } from '../../../../register/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-
-
 @Component({
   selector: 'app-employees',
   styleUrls: ['./employees.component.scss'],
-  templateUrl: './employees.component.html',
+  templateUrl: './employees.component.html', 
 })
 export class EmployeesComponent implements OnInit {
   displayedColumns: string[] = ['identity', 'firstName', 'lastName', 'startOfWorkDate', 'actions']; // Add 'actions' column
@@ -66,17 +63,13 @@ export class EmployeesComponent implements OnInit {
     this._router.navigate(['employees/update', employee.id]);
   }
   deleteEmployee(employee: Employee) {
-
-    if (sessionStorage !== undefined)
-
+    if (typeof sessionStorage !== 'undefined') 
       if (!this._authService.isAuthorized()) {
         this.displayUnauthorizedAccessError();
         this._router.navigate(['login'])
 
       }
     if (this._authService.isAuthorized()) {
-
-
       const dialogRef = this.dialog.open(DeleteEmployeeConfirmationDialogComponent, {
         width: '350px',
         data: employee

@@ -15,7 +15,6 @@ import {
   PortalModule,
   TemplatePortal
 } from "./chunk-G7P5MI63.js";
-import "./chunk-N5RS543Q.js";
 import {
   animate,
   state,
@@ -23,6 +22,7 @@ import {
   transition,
   trigger
 } from "./chunk-VP2DBMLO.js";
+import "./chunk-N5RS543Q.js";
 import {
   MatCommonModule
 } from "./chunk-LLDDGPB6.js";
