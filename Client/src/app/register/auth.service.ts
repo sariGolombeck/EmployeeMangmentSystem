@@ -29,12 +29,4 @@ export class AuthService {
     }
     return true;
   }
-
-  // getIsTrueToken(): Observable<boolean> {
-  //   const headers = new HttpHeaders({
-
-  //     'Authorization': `Bearer ${localStorage.getItem('token')}`
-  //   });
-  //   return this.http.get<boolean>('https://localhost:7195/api/Auth/verifyToken', { headers });
-  // }
 }
